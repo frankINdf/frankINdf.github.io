@@ -1,48 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>go go go</title>
+  <title>阳阳的博客</title>
   
-  <subtitle>fire in the hole</subtitle>
+  <subtitle>学无止境</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frankindf.github.io/"/>
-  <updated>2018-03-28T13:27:04.703Z</updated>
+  <updated>2018-03-28T13:25:19.646Z</updated>
   <id>https://frankindf.github.io/</id>
   
   <author>
-    <name>frank</name>
+    <name>阳阳</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>“</title>
-    <link href="https://frankindf.github.io/2018/03/28/%E2%80%9C/"/>
-    <id>https://frankindf.github.io/2018/03/28/“/</id>
-    <published>2018-03-28T13:27:04.000Z</published>
-    <updated>2018-03-28T13:27:04.703Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>“博客名”</title>
-    <link href="https://frankindf.github.io/2018/03/28/%E2%80%9C%E5%8D%9A%E5%AE%A2%E5%90%8D%E2%80%9D/"/>
-    <id>https://frankindf.github.io/2018/03/28/“博客名”/</id>
-    <published>2018-03-28T13:27:01.000Z</published>
-    <updated>2018-03-28T13:27:01.138Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title></title>
@@ -80,50 +52,6 @@
       
         &lt;h1 id=&quot;一、读取数据&quot;&gt;&lt;a href=&quot;#一、读取数据&quot; class=&quot;headerlink&quot; title=&quot;一、读取数据&quot;&gt;&lt;/a&gt;一、读取数据&lt;/h1&gt;&lt;p&gt;1.读取数据为矩阵&lt;br&gt;2.画散点图scatter（）&lt;/p&gt;
 &lt;h1 id=&quot;二、计算过程&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>3rd</title>
-    <link href="https://frankindf.github.io/2018/02/02/3rd/"/>
-    <id>https://frankindf.github.io/2018/02/02/3rd/</id>
-    <published>2018-02-02T15:43:59.000Z</published>
-    <updated>2018-02-16T05:35:25.452Z</updated>
-    
-    <content type="html"><![CDATA[<p>线性回归的基本公式<br><img src="/2018/02/02/3rd/基本公式1.jpg"></p><p>求解方法两种<br>1.<br>2.梯度下降法</p><p>numpy.loadtext(fileName,dtype=数据类型,comments=’注释’,delimiter=分隔符,skiprow=跳过前几行,usecols=读取的列,unpack=true分列读取)<br>converters : dict, optional</p><p>A dictionary mapping column number to a function that will convert that column to a float. E.g., if column 0 is a date string: converters = {0: datestr2num}. Converters can also be used to provide a default value for missing data (but see also genfromtxt): converters = {3: lambda s: float(s.strip() or 0)}. Default: None.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;线性回归的基本公式&lt;br&gt;&lt;img src=&quot;/2018/02/02/3rd/基本公式1.jpg&quot;&gt;&lt;/p&gt;
-&lt;p&gt;求解方法两种&lt;br&gt;1.&lt;br&gt;2.梯度下降法&lt;/p&gt;
-&lt;p&gt;numpy.loadtext(fileName,dtype=数据类型,comments=’注释’
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>2nd day</title>
-    <link href="https://frankindf.github.io/2018/02/02/2nd-day/"/>
-    <id>https://frankindf.github.io/2018/02/02/2nd-day/</id>
-    <published>2018-02-02T15:35:33.000Z</published>
-    <updated>2018-02-02T15:38:02.111Z</updated>
-    
-    <content type="html"><![CDATA[<p>线性回归属于回归问题。对于回归问题，解决流程为：<br>给定数据集中每个样本及其正确答案，选择一个模型函数h（hypothesis，假设），并为h找到适应数据的（未必是全局）最优解，即找出最优解下的h的参数。这里给定的数据集取名叫训练集（Training Set）。不能所有数据都拿来训练，要留一部分验证模型好不好使，这点以后说。先列举几个几个典型的模型：</p><p>最基本的单变量线性回归：<br>形如h(x)=theta0+theta1*x1</p><p>多变量线性回归：<br>形如h(x)=theta0+theta1<em>x1+theta2</em>x2+theta3*x3</p><p>多项式回归（Polynomial Regression）：<br>形如h(x)=theta0+theta1<em>x1+theta2</em>(x2^2)+theta3<em>(x3^3)<br>或者h(x)=ttheta0+theta1</em>x1+theta2*sqr(x2)<br>但是我们可以令x2=x2^2，x3=x3^3，于是又将其转化为了线性回归模型。虽然不能说多项式回归问题属于线性回归问题，但是一般我们就是这么做的。</p><p>所以最终通用表达式就是：</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;线性回归属于回归问题。对于回归问题，解决流程为：&lt;br&gt;给定数据集中每个样本及其正确答案，选择一个模型函数h（hypothesis，假设），并为h找到适应数据的（未必是全局）最优解，即找出最优解下的h的参数。这里给定的数据集取名叫训练集（Training Set）。不能所有
       
     
     </summary>
