@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="numpy的argsort函数用法numpy中的argsort可以返回一个索引 numpy.argsort(a, axis=-1, kind=’quicksort’, order=None)">
+<meta name="description" content="softmax函数在机器学习中应用很广泛，神经网络中需要将正向传播的结果和的正确结果进行进行对比，softmax函数定义如下，它将分类结果映射到[0,1]这个区间,Vi、Vj表示V中第i，j个元素，ai可以看成第i个分类结果：$$a_i =\frac{e^{V _i}}{\sum_je^{V_j} }$$交叉熵C如下，其中yi代表真实值，ai在这里为softmax：$$C = -\sum_i{y_">
 <meta property="og:type" content="article">
-<meta property="og:title" content="numpy的argsort函数用法">
-<meta property="og:url" content="https://frankindf.github.io/2018/03/28/numpy的argsort函数用法/index.html">
+<meta property="og:title" content="tensorflow中的softmax">
+<meta property="og:url" content="https://frankindf.github.io/2018/04/20/tensorflow中的softmax/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="numpy的argsort函数用法numpy中的argsort可以返回一个索引 numpy.argsort(a, axis=-1, kind=’quicksort’, order=None)">
+<meta property="og:description" content="softmax函数在机器学习中应用很广泛，神经网络中需要将正向传播的结果和的正确结果进行进行对比，softmax函数定义如下，它将分类结果映射到[0,1]这个区间,Vi、Vj表示V中第i，j个元素，ai可以看成第i个分类结果：$$a_i =\frac{e^{V _i}}{\sum_je^{V_j} }$$交叉熵C如下，其中yi代表真实值，ai在这里为softmax：$$C = -\sum_i{y_">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-29T15:02:26.342Z">
+<meta property="og:updated_time" content="2018-04-20T15:43:18.126Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="numpy的argsort函数用法">
-<meta name="twitter:description" content="numpy的argsort函数用法numpy中的argsort可以返回一个索引 numpy.argsort(a, axis=-1, kind=’quicksort’, order=None)">
+<meta name="twitter:title" content="tensorflow中的softmax">
+<meta name="twitter:description" content="softmax函数在机器学习中应用很广泛，神经网络中需要将正向传播的结果和的正确结果进行进行对比，softmax函数定义如下，它将分类结果映射到[0,1]这个区间,Vi、Vj表示V中第i，j个元素，ai可以看成第i个分类结果：$$a_i =\frac{e^{V _i}}{\sum_je^{V_j} }$$交叉熵C如下，其中yi代表真实值，ai在这里为softmax：$$C = -\sum_i{y_">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://frankindf.github.io/2018/03/28/numpy的argsort函数用法/"/>
+  <link rel="canonical" href="https://frankindf.github.io/2018/04/20/tensorflow中的softmax/"/>
 
 
 
 
 
-  <title>numpy的argsort函数用法 | 阳阳的博客</title>
+  <title>tensorflow中的softmax | 阳阳的博客</title>
   
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/03/28/numpy的argsort函数用法/">
+    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/20/tensorflow中的softmax/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="阳阳">
@@ -322,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">numpy的argsort函数用法</h1>
+          <h1 class="post-title" itemprop="name headline">tensorflow中的softmax</h1>
         
 
         <div class="post-meta">
@@ -334,8 +334,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T22:17:28+08:00">
-                2018-03-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T21:58:53+08:00">
+                2018-04-20
               </time>
             
 
@@ -352,7 +352,7 @@
 
           
           
-             <span id="/2018/03/28/numpy的argsort函数用法/" class="leancloud_visitors" data-flag-title="numpy的argsort函数用法">
+             <span id="/2018/04/20/tensorflow中的softmax/" class="leancloud_visitors" data-flag-title="tensorflow中的softmax">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,16 +383,29 @@
       
 
       
-        <h1 id="numpy的argsort函数用法"><a href="#numpy的argsort函数用法" class="headerlink" title="numpy的argsort函数用法"></a>numpy的argsort函数用法</h1><p>numpy中的argsort可以返回一个索引</p>
-<p>numpy.argsort(a, axis=-1, kind=’quicksort’, order=None)</p>
-<a id="more"></a>
-<p>a数组</p>
-<p>axis行或者列，默认为-1，即最后一个维度，0为列，1为行</p>
-<p>kind排序方式{‘quicksort’, ‘mergesort’, ‘heapsort’}</p>
-<p>order</p>
-<p>f返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">a=np.array(([[1,6,3,4,2]]))</span><br><span class="line">a.argsort()</span><br><span class="line">#返回的是ARRAY从小到大的索引</span><br><span class="line">Out[35]: array([[0, 4, 2, 3, 1]], dtype=int64)</span><br><span class="line">#默认为行排序的索引</span><br><span class="line">np.argsort(a)</span><br><span class="line">Out[41]: </span><br><span class="line">array([[0, 3, 2, 1],</span><br><span class="line">       [1, 0, 3, 2]], dtype=int64)</span><br><span class="line">#axis为1按列排序</span><br><span class="line">np.argsort(a,axis=0)</span><br><span class="line">Out[39]: </span><br><span class="line">array([[0, 1, 0, 0],</span><br><span class="line">       [1, 0, 1, 1]], dtype=int64)</span><br><span class="line">#axis为1，按行排序</span><br><span class="line">np.argsort(a,axis=1)</span><br><span class="line">Out[40]: </span><br><span class="line">array([[0, 3, 2, 1],</span><br><span class="line">       [1, 0, 3, 2]], dtype=int64)</span><br></pre></td></tr></table></figure>
-<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>
+        <p>softmax函数在机器学习中应用很广泛，神经网络中需要将正向传播的结果和的正确结果进行进行对比，softmax函数定义如下，它将分类结果映射到[0,1]这个区间,Vi、Vj表示V中第i，j个元素，ai可以看成第i个分类结果：<br>$$<br>a_i =\frac{e^{V _i}}{\sum_je^{V_j} }<br>$$<br>交叉熵C如下，其中yi代表真实值，ai在这里为softmax：<br>$$<br>C = -\sum_i{y_i{log(a_i)}}<br>$$<br>计算两者之间的差距,每项的Loss可以用下式表示，对于<strong>只有1个正确分类i的分类</strong>,softmax交叉熵计算公式如下：<br>$$<br>L_i = -log(\frac{e^{f _{y_i}}}{\sum_je^{f_{y_j}} }  )<br>$$<br>可以看到，括号里即为softmax的值，它越大，样本的Loss就越小，即与真实分布的差距越小。</p>
+<p>在TensorFlow中交叉熵有下面几种计算方法：</p>
+<ul>
+<li><p>tf.nn.softmax_cross_entropy_with_logits（label, logits）</p>
+<p>logits的shape=(m,n)，label的shape=(m,n),，如果真实分类logits为一维数组，则需要进行one-hot编码。</p>
+</li>
+</ul>
+<ul>
+<li>tf.nn.sparse_softmax_cross_entropy_with_logits（label, logits）</li>
+<li>logits的shape=(m,n)，label的shape=(m,1),若label的shape=(m,n)阶则需要使用argmax函数变为(m,1)</li>
+<li>tf.nn.sigmoid_cross_entropy_with_logits：张量中标量与标量间的运算,求两点分布 之间的交叉熵。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下面举例进行交叉熵计算</span></span><br><span class="line"><span class="comment">#分别用softmax_cross_entropy_with_logits、tf.nn.sparse_softmax_cross_entropy_with_logits</span></span><br><span class="line"><span class="comment">#手算和tf.nn.sigmoid_cross_entropy_with_logits</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line"><span class="comment">#label代表真实分布</span></span><br><span class="line"><span class="comment">#采用one-hot编码，即真实分类分别为[3,2,1,1,2]</span></span><br><span class="line">labels = np.array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">                   [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">                   [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                   [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">                   [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]], dtype=np.float32)</span><br><span class="line"><span class="comment">#logits代表前向传播的结果</span></span><br><span class="line"><span class="comment">#代表每个值得权重</span></span><br><span class="line">logits = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">7</span>],</span><br><span class="line">                   [<span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>],</span><br><span class="line">                   [<span class="number">6</span>, <span class="number">1</span>, <span class="number">3</span>],</span><br><span class="line">                   [<span class="number">8</span>, <span class="number">2</span>, <span class="number">0</span>],</span><br><span class="line">                   [<span class="number">3</span>, <span class="number">6</span>, <span class="number">1</span>]], dtype=np.float32)</span><br><span class="line">num_classes = labels.shape[<span class="number">1</span>]</span><br><span class="line"><span class="comment">#tf.nn.softmax用来求softmax值，即映射到[0,1]区间上的概率</span></span><br><span class="line">predicts = tf.nn.softmax(logits=logits, dim=<span class="number">-1</span>)</span><br><span class="line">sess.run(predicts)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">out:array([[  2.45611509e-03,   6.67641265e-03,   9.90867496e-01],</span><br><span class="line">       [  1.14195190e-01,   8.43794703e-01,   4.20100652e-02],</span><br><span class="line">       [  9.46499169e-01,   6.37746137e-03,   4.71234173e-02],</span><br><span class="line">       [  9.97193694e-01,   2.47179624e-03,   3.34521203e-04],</span><br><span class="line">       [  4.71234173e-02,   9.46499169e-01,   6.37746137e-03]], dtype=float32)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用tf.nn.softmax_cross_entropy_with_logits计算交叉熵，labels可以直接用one-hot编码的数组</span></span><br><span class="line">cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=labels)</span><br><span class="line">sess.run(cross_entropy)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">out:array([ 0.00917445,  0.16984604,  0.05498521,  0.00281022,  0.05498521], dtype=float32)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用tf.nn.sparse_softmax_cross_entropy_with_logits计算交叉熵，labels要处理为(m,1)维</span></span><br><span class="line">classes = tf.argmax(labels, axis=<span class="number">1</span>)</span><br><span class="line">sess.run(classes)</span><br><span class="line">cross_entropy2 = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=classes)</span><br><span class="line">sess.run(cross_entropy2)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">out:array([ 0.00917445,  0.16984604,  0.05498521,  0.00281022,  0.05498521], dtype=float32)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#直接用reduce_sum计算，其中</span></span><br><span class="line"><span class="comment">#用clip_by_value将取值限制在1e-10以上，防止出log(0)</span></span><br><span class="line"><span class="comment">#用labels/predicts相当于前面加负号</span></span><br><span class="line">labels = tf.clip_by_value(labels, <span class="number">1e-10</span>, <span class="number">1.0</span>)</span><br><span class="line">predicts = tf.clip_by_value(predicts, <span class="number">1e-10</span>, <span class="number">1.0</span>)</span><br><span class="line">cross_entropy4 = tf.reduce_sum(labels * tf.log(labels/predicts), axis=<span class="number">1</span>)</span><br><span class="line">sess.run(cross_entropy4)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([ 0.00917445,  0.16984604,  0.05498521,  0.00281022,  0.05498521], dtype=float32)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">z = <span class="number">0.8</span></span><br><span class="line">x = <span class="number">1.3</span></span><br><span class="line">cross_entropy3 = tf.nn.sigmoid_cross_entropy_with_logits(labels=z, logits=x)</span><br><span class="line"><span class="comment"># tf.nn.sigmoid_cross_entropy_with_logits的具体实现:</span></span><br><span class="line">cross_entropy5 = - z * tf.log(tf.nn.sigmoid(x))  - (<span class="number">1</span>-z) * tf.log(<span class="number">1</span>-tf.nn.sigmoid(x))</span><br><span class="line">sess.run(cross_entropy3)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.50100845</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -424,15 +437,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/04/20/tensorflow中损失函数的用法/" rel="next" title="tensorflow中损失函数的用法">
+                <i class="fa fa-chevron-left"></i> tensorflow中损失函数的用法
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/20/tensorflow中损失函数的用法/" rel="prev" title="tensorflow中损失函数的用法">
-                tensorflow中损失函数的用法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -484,17 +497,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -543,22 +547,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy的argsort函数用法"><span class="nav-number">1.</span> <span class="nav-text">numpy的argsort函数用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text"> </span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -867,6 +855,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
