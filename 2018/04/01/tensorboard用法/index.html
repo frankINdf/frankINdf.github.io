@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="tensorflow," />
 
 
 
@@ -92,17 +92,21 @@
 
 
 
-<meta name="description" content="数组操作时有时如果需要获取数组的索引可以使用argsort函数。">
+<meta name="description" content="通过TensorBoard可以对神经网络结构和参数收敛有更深刻的理解，本文记录了TensorBoard的应用方法。">
+<meta name="keywords" content="tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="numpy的argsort函数用法">
-<meta property="og:url" content="https://frankindf.github.io/2018/03/28/numpy的argsort函数用法/index.html">
+<meta property="og:title" content="tensorboard应用">
+<meta property="og:url" content="https://frankindf.github.io/2018/04/01/tensorboard用法/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="数组操作时有时如果需要获取数组的索引可以使用argsort函数。">
+<meta property="og:description" content="通过TensorBoard可以对神经网络结构和参数收敛有更深刻的理解，本文记录了TensorBoard的应用方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-21T15:12:39.022Z">
+<meta property="og:image" content="https://frankindf.github.io/2018/04/01/tensorboard用法/blog/source/_posts/tensorboard用法/1.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/04/01/tensorboard用法/blog/source/_posts/tensorboard用法/2.png">
+<meta property="og:updated_time" content="2018-04-21T16:19:36.348Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="numpy的argsort函数用法">
-<meta name="twitter:description" content="数组操作时有时如果需要获取数组的索引可以使用argsort函数。">
+<meta name="twitter:title" content="tensorboard应用">
+<meta name="twitter:description" content="通过TensorBoard可以对神经网络结构和参数收敛有更深刻的理解，本文记录了TensorBoard的应用方法。">
+<meta name="twitter:image" content="https://frankindf.github.io/2018/04/01/tensorboard用法/blog/source/_posts/tensorboard用法/1.png">
 
 
 
@@ -132,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://frankindf.github.io/2018/03/28/numpy的argsort函数用法/"/>
+  <link rel="canonical" href="https://frankindf.github.io/2018/04/01/tensorboard用法/"/>
 
 
 
 
 
-  <title>numpy的argsort函数用法 | 阳阳的博客</title>
+  <title>tensorboard应用 | 阳阳的博客</title>
   
 
 
@@ -305,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/03/28/numpy的argsort函数用法/">
+    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/01/tensorboard用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="阳阳">
@@ -322,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">numpy的argsort函数用法</h1>
+          <h1 class="post-title" itemprop="name headline">tensorboard应用</h1>
         
 
         <div class="post-meta">
@@ -334,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T22:17:28+08:00">
-                2018-03-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T17:28:48+08:00">
+                2018-04-01
               </time>
             
 
@@ -352,7 +356,7 @@
 
           
           
-             <span id="/2018/03/28/numpy的argsort函数用法/" class="leancloud_visitors" data-flag-title="numpy的argsort函数用法">
+             <span id="/2018/04/01/tensorboard用法/" class="leancloud_visitors" data-flag-title="tensorboard应用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,17 +387,28 @@
       
 
       
-        <p>数组操作时有时如果需要获取数组的索引可以使用argsort函数。</p>
+        <p>通过TensorBoard可以对神经网络结构和参数收敛有更深刻的理解，本文记录了TensorBoard的应用方法。</p>
 <a id="more"></a>
-<p>numpy中的argsort可以返回一个索引，具体参数如下</p>
-<p>numpy.argsort(a, axis=-1, kind=’quicksort’, order=None)</p>
-<p>a数组</p>
-<p>axis行或者列，默认为-1，即最后一个维度，0为列，1为行</p>
-<p>kind排序方式{‘quicksort’, ‘mergesort’, ‘heapsort’}</p>
-<p>order</p>
-<p>返回的是排序后的数组在原数组中索引的数组。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">a=np.array(([[1,6,3,4,2]]))</span><br><span class="line">a.argsort()</span><br><span class="line">#返回的是ARRAY从小到大的索引</span><br><span class="line">Out[35]: array([[0, 4, 2, 3, 1]], dtype=int64)</span><br><span class="line">#默认为行排序的索引</span><br><span class="line">np.argsort(a)</span><br><span class="line">Out[41]: </span><br><span class="line">array([[0, 3, 2, 1],</span><br><span class="line">       [1, 0, 3, 2]], dtype=int64)</span><br><span class="line">#axis为1按列排序</span><br><span class="line">np.argsort(a,axis=0)</span><br><span class="line">Out[39]: </span><br><span class="line">array([[0, 1, 0, 0],</span><br><span class="line">       [1, 0, 1, 1]], dtype=int64)</span><br><span class="line">#axis为1，按行排序</span><br><span class="line">np.argsort(a,axis=1)</span><br><span class="line">Out[40]: </span><br><span class="line">array([[0, 3, 2, 1],</span><br><span class="line">       [1, 0, 3, 2]], dtype=int64)</span><br></pre></td></tr></table></figure>
-<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>
+<p>标量数据汇总和记录使用</p>
+<p>tf.summary.scalar(tags, values, collections=None, name=None)  </p>
+<p>直接记录变量var的直方图</p>
+<p>tf.summary.histogram(tag, values, collections=None, name=None）  </p>
+<p>输出带图像的probuf，汇总数据的图像的的形式如下： ‘ <em>tag</em> /image/0’, ‘ <em>tag</em> /image/1’, etc.，如：input/image/0等</p>
+<p>tf.summary.image(tag, tensor, max_images=3, collections=None, name=None)  </p>
+<p>汇总再进行一次合并</p>
+<p>tf.summary.merge(inputs, collections=None, name=None)</p>
+<p>合并默认图形中的所有汇总</p>
+<p>tf.summaries.merge_all(key=’summaries’)  </p>
+<p>下面看一个TensorBoard的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos;&apos;</span><br><span class="line">通过</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">from __future__ import print_function</span><br><span class="line">import tensorflow as tf</span><br><span class="line">#输入数据，这里用的是mnist数据集</span><br><span class="line">from tensorflow.examples.tutorials.mnist import input_data</span><br><span class="line">mnist = input_data.read_data_sets(&quot;/tmp/data/&quot;, one_hot=True)</span><br><span class="line">#学习率</span><br><span class="line">learning_rate = 0.01</span><br><span class="line">#训练集的训练次数</span><br><span class="line">training_epochs = 25</span><br><span class="line">#每次输入的数据个数</span><br><span class="line">batch_size = 100</span><br><span class="line">display_epoch = 1</span><br><span class="line">#数据存储位置</span><br><span class="line">logs_path = &apos;/tmp/tensorflow_logs/example/&apos;</span><br><span class="line"># mnist数据集是28*28的图片，一共784个像素</span><br><span class="line">#训练集x</span><br><span class="line">x = tf.placeholder(tf.float32, [None, 784], name=&apos;InputData&apos;)</span><br><span class="line">#真实值y，对数字分类有10个类别</span><br><span class="line">y = tf.placeholder(tf.float32, [None, 10], name=&apos;LabelData&apos;)</span><br><span class="line"></span><br><span class="line">#定义神经网络参数y=wx+b中的x和b</span><br><span class="line">W = tf.Variable(tf.zeros([784, 10]), name=&apos;Weights&apos;)</span><br><span class="line">b = tf.Variable(tf.zeros([10]), name=&apos;Bias&apos;)</span><br><span class="line"></span><br><span class="line"># 在命名空间内定义模型、损失、优化方法</span><br><span class="line">with tf.name_scope(&apos;Model&apos;):</span><br><span class="line">    # 训练模型，采用全连接神经网络</span><br><span class="line">    #matmul进行矩阵相乘</span><br><span class="line">    #softmax得到输出结果</span><br><span class="line">    pred = tf.nn.softmax(tf.matmul(x, W) + b) </span><br><span class="line">with tf.name_scope(&apos;Loss&apos;):</span><br><span class="line">	#损失函数使用交叉熵，这里也可以用TF自带的函数</span><br><span class="line">    cost = tf.reduce_mean(-tf.reduce_sum(y*tf.log(pred), reduction_indices=1))</span><br><span class="line">with tf.name_scope(&apos;SGD&apos;):</span><br><span class="line">    #用梯度下降法对损失函数进行优化</span><br><span class="line">    optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)</span><br><span class="line">with tf.name_scope(&apos;Accuracy&apos;):</span><br><span class="line">    # 计算准确率，这里argmax的参数就对应分类</span><br><span class="line">    acc = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))</span><br><span class="line">    acc = tf.reduce_mean(tf.cast(acc, tf.float32))</span><br><span class="line"></span><br><span class="line"># 计算之前需要将全局变量初始化</span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line"># 添加变量到TensorBoard</span><br><span class="line"># 这里添加了损失、准确率，在输出的文件中可以看到这些参数的变化情况</span><br><span class="line">tf.summary.scalar(&quot;loss&quot;, cost)</span><br><span class="line">tf.summary.scalar(&quot;accuracy&quot;, acc)</span><br><span class="line"># Merge all summaries into a single op</span><br><span class="line">merged_summary_op = tf.summary.merge_all()</span><br><span class="line"></span><br><span class="line">with tf.Session() as sess:</span><br><span class="line"></span><br><span class="line">    # 初始化数据</span><br><span class="line">    sess.run(init)</span><br><span class="line"></span><br><span class="line">    # 初始化TB，路径为logs_path</span><br><span class="line">    summary_writer = tf.summary.FileWriter(logs_path, graph=tf.get_default_graph())</span><br><span class="line"></span><br><span class="line">    # 开始训练过程</span><br><span class="line">    for epoch in range(training_epochs):</span><br><span class="line">        avg_cost = 0.</span><br><span class="line">        #所有数据训练一次要分成total_batch个数据集</span><br><span class="line">        total_batch = int(mnist.train.num_examples/batch_size)</span><br><span class="line">        for i in range(total_batch):</span><br><span class="line">            batch_xs, batch_ys = mnist.train.next_batch(batch_size)</span><br><span class="line">            # 训练数据batch_xs,batch_ys</span><br><span class="line">            _, c, summary = sess.run([optimizer, cost, merged_summary_op],</span><br><span class="line">                                     feed_dict=&#123;x: batch_xs, y: batch_ys&#125;)</span><br><span class="line">            # 将数据写入之前初始化的TB中</span><br><span class="line">            summary_writer.add_summary(summary, epoch * total_batch + i)</span><br><span class="line">            #计算训练一次的平均损失函数</span><br><span class="line">            avg_cost += c / total_batch</span><br><span class="line">        # 显示每个Epoch的cost</span><br><span class="line">        if (epoch+1) % display_epoch == 0:</span><br><span class="line">            print(&quot;Epoch:&quot;, &apos;%04d&apos; % (epoch+1), &quot;cost=&quot;, &quot;&#123;:.9f&#125;&quot;.format(avg_cost))</span><br><span class="line"></span><br><span class="line">    print(&quot;Optimization Finished!&quot;)</span><br><span class="line"></span><br><span class="line">    # 测试集上显示准确率</span><br><span class="line">    print(&quot;Accuracy:&quot;, acc.eval(&#123;x: mnist.test.images, y: mnist.test.labels&#125;))</span><br><span class="line">    print(&quot;Run the command line:\n&quot; \</span><br><span class="line">          &quot;--&gt; tensorboard --logdir=/tmp/tensorflow_logs &quot; \</span><br><span class="line">          &quot;\nThen open http://0.0.0.0:6006/ into your web browser&quot;)</span><br></pre></td></tr></table></figure>
+<p>运行完程序后，输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[out]：Epoch: 0001 cost= 1.183585649</span><br><span class="line">Epoch: 0002 cost= 0.665355021</span><br><span class="line">Epoch: 0003 cost= 0.552772734</span><br><span class="line">Epoch: 0004 cost= 0.498669290</span><br><span class="line">Epoch: 0005 cost= 0.465467163</span><br><span class="line">Epoch: 0006 cost= 0.442601420</span><br><span class="line">Epoch: 0007 cost= 0.425460528</span><br><span class="line">Epoch: 0008 cost= 0.412206892</span><br><span class="line">Epoch: 0009 cost= 0.401397175</span><br><span class="line">Epoch: 0010 cost= 0.392420013</span><br><span class="line">Epoch: 0011 cost= 0.384768393</span><br><span class="line">Epoch: 0012 cost= 0.378172010</span><br><span class="line">Epoch: 0013 cost= 0.372432202</span><br><span class="line">Epoch: 0014 cost= 0.367334918</span><br><span class="line">Epoch: 0015 cost= 0.362694857</span><br><span class="line">Epoch: 0016 cost= 0.358602089</span><br><span class="line">Epoch: 0017 cost= 0.354879144</span><br><span class="line">Epoch: 0018 cost= 0.351492124</span><br><span class="line">Epoch: 0019 cost= 0.348284597</span><br><span class="line">Epoch: 0020 cost= 0.345425291</span><br><span class="line">Epoch: 0021 cost= 0.342768804</span><br><span class="line">Epoch: 0022 cost= 0.340257174</span><br><span class="line">Epoch: 0023 cost= 0.337940815</span><br><span class="line">Epoch: 0024 cost= 0.335757064</span><br><span class="line">Epoch: 0025 cost= 0.333699012</span><br><span class="line">Optimization Finished!</span><br><span class="line">Accuracy: 0.9135</span><br></pre></td></tr></table></figure>
+<p>运行tensorboard –logdir=/tmp/tensorflow_logs，打开浏览器进入<a href="http://localhost:6006查看结果。" target="_blank" rel="noopener">http://localhost:6006查看结果。</a></p>
+<figure class="half"><br>    <img src="/2018/04/01/tensorboard用法/blog\source\_posts\tensorboard用法\1.png" alt="1"><br>    <img src="/2018/04/01/tensorboard用法/blog\source\_posts\tensorboard用法\2.png" alt="2"><br></figure>
+
+
+
+
       
     </div>
     
@@ -416,6 +431,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+          
+        </div>
+      
 
       
       
@@ -425,14 +446,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/04/01/tensorflow卷积过程/" rel="next" title="tensorflow卷积函数">
+                <i class="fa fa-chevron-left"></i> tensorflow卷积函数
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/29/adaboost算法/" rel="prev" title="adaboost算法">
-                adaboost算法 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/20/tensorflow中的softmax/" rel="prev" title="tensorflow中的softmax">
+                tensorflow中的softmax <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -485,17 +510,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -553,22 +569,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"> </span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

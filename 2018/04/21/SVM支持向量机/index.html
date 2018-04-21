@@ -84,8 +84,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="阳阳的博客" type="application/atom+xml" />
 
@@ -94,17 +92,19 @@
 
 
 
-<meta name="description" content="this is tags">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tagcloud">
-<meta property="og:url" content="https://frankindf.github.io/tags/index.html">
+<meta name="description" content="SVM是经典机器学习方法，本文主要是对SVM原理、求解等方面的理解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVM支持向量机">
+<meta property="og:url" content="https://frankindf.github.io/2018/04/21/SVM支持向量机/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="this is tags">
+<meta property="og:description" content="SVM是经典机器学习方法，本文主要是对SVM原理、求解等方面的理解。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-28T14:30:06.875Z">
+<meta property="og:image" content="https://frankindf.github.io/2018/04/21/SVM支持向量机/blog/source/_posts/SVM支持向量机/下载.png">
+<meta property="og:updated_time" content="2018-04-21T15:08:49.642Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tagcloud">
-<meta name="twitter:description" content="this is tags">
+<meta name="twitter:title" content="SVM支持向量机">
+<meta name="twitter:description" content="SVM是经典机器学习方法，本文主要是对SVM原理、求解等方面的理解。">
+<meta name="twitter:image" content="https://frankindf.github.io/2018/04/21/SVM支持向量机/blog/source/_posts/SVM支持向量机/下载.png">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://frankindf.github.io/tags/"/>
+  <link rel="canonical" href="https://frankindf.github.io/2018/04/21/SVM支持向量机/"/>
 
 
 
 
 
-  <title>Tagcloud | 阳阳的博客</title>
+  <title>SVM支持向量机 | 阳阳的博客</title>
   
 
 
@@ -295,40 +295,178 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/21/SVM支持向量机/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阳阳">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阳阳的博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">Tagcloud</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 2 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/tensorflow/" style="font-size: 30px; color: #111">tensorflow</a> <a href="/tags/机器学习/" style="font-size: 12px; color: #ccc">机器学习</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">SVM支持向量机</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T18:46:53+08:00">
+                2018-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/21/SVM支持向量机/" class="leancloud_visitors" data-flag-title="SVM支持向量机">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>SVM是经典机器学习方法，本文主要是对SVM原理、求解等方面的理解。</p>
+<a id="more"></a>
+<p>SVM分类使用sigmoid函数判断结果。</p>
+<p><strong>几何角度的解释</strong>：不同分类之边界之间间隔最大化<br>$$<br>{\min_{w,b}}\frac{1}{2}\left | w \right |^2<br>$$</p>
+<p>$$<br>s.t. y_i(w^Tx_i+b)\geqslant 1 , i=1,2…,m.<br>$$</p>
+<p><strong>损失函数最小解释</strong>：$1/2||w||^2$为结构化风险的L2正则项，损失函数为合页函数$l_{0/1}$为$max(0,f(x))$，<br>$$<br>{\min_{w,b}}\frac{1}{2}\left | w \right |^2 + C\sum_{i=1}^{m} l _{0/1}(y_i(w^Tx_i+b)-1)<br>$$</p>
+<p>$$<br>s.t     (y_i(w^Tx_i+b)-1)\leqslant 1-\xi _i<br>$$</p>
+<p>$$<br>\xi _i\geqslant 0<br>$$</p>
+<p>采用拉格朗日法：<br>$$<br>L(w,b,\xi,\alpha,\mu)=\frac{1}{2}\left | w \right |^2 + C\sum_{i=1}^{m} l _{0/1}+\sum_{m}^{i=1}\alpha_i[y_i(w^Tx_i+b-1+l_{0/1})]-\sum_{m}^{i=1}{\mu_i\xi_i}<br>$$<br>依次对$w,b,\xi_i$求偏导，得到<br>$$<br>\min_{w,b,\xi}L = \sum_{i=1}^{N}a_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N}a_i a_j y_i y_jK(x_i,x_j)<br>$$<br>原始问题满足KKT条件，对偶问题变为：<br>$$<br>\max \sum_{i=1}^{N}a_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N}a_i a_j y_i y_jK(x_i,x_j)<br>$$</p>
+<p>$$<br>s.t.\space\sum_{j=1}^{N}a_iy_i=0<br>$$</p>
+<p>$$<br>0 \leqslant a_iy_i \leqslant C<br>$$</p>
+<p><strong>惩罚因子</strong>C: C代表对损失函数的惩罚程度，C越大损失函数对优化影响越大，损失函数取的系数C正无穷时，不允许有异常点，即为硬间隔。</p>
+<p><strong>损失函数</strong>： $l_{0/1}$理解为$y_i(w^Tx_i+b)-1&gt;0$时无损失，无需继续优化，这里可以看到$l_{0/1}$是“没有追求”的，只要预测正确就不再努力使预测值向正方向增加，这也使SVM算法可以对异常值有一定“容忍”。</p>
+<p><strong>核函数：</strong>把低维度的数据映射到高维度，用空间变换找数据的分割面，找到分割面后再转换到原空间，即可画出分界边界，例如$x^2+y^2+b$ 在新空间$\alpha+\beta+b$为直线，在原空间线性不可分的点在新空间里线性可分。</p>
+<p>RBF核$K(x,x_i)=exp(\frac{||x-x_i||^2}{σ^2})$会将原始空间映射为无穷维空间,$σ$ 选得大，高次特征上的权衰减变快， <em>σ</em> 选得小，可以将任意的数据映射为线性可分，可能过拟合。<strong>高斯核实际上具有相当高的灵活性，也是使用最广泛的核函数之一。</strong></p>
+<p><strong>SMO算法：</strong>简单理解SMO就是选定$a_i,a_j$将其他项看做常数，可以用$a_i$表示$a_j$,再在[0,C]这个区间求解极值，依次循环。</p>
+<p><strong>注意</strong></p>
+<p>SVM没有处理缺失值的策略，使用SVM前需要将数据进行处理</p>
+<p>例1：SVM示例</p>
+<p>绘制SVM分类示意图，用clf.coef_和clf.intercept获得w和b，用clf.support_vectors_获得支持向量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># coding: utf-8</span><br><span class="line">import numpy as np</span><br><span class="line">from sklearn import svm</span><br><span class="line">import pylab as pl</span><br><span class="line">np.random.seed(0) # 使用相同的seed()值，则每次生成的随即数都相同</span><br><span class="line"># 创建可线性分类的数据集与结果集</span><br><span class="line">X = np.r_[np.random.randn(20, 2) - [2, 2], np.random.randn(20,2) + [2, 2]]</span><br><span class="line">Y = [0] * 20 + [1] * 20</span><br><span class="line"></span><br><span class="line"># 构造 SVM 模型</span><br><span class="line">clf = svm.SVC(kernel=&apos;linear&apos;)</span><br><span class="line">clf.fit(X, Y) # 训练 </span><br><span class="line">#利用clf.coef_得到系数w</span><br><span class="line">#clf.intercept_[0]是b</span><br><span class="line">xx = np.linspace(-5, 5) # 在区间[-5, 5] 中产生连续的值，用于画线</span><br><span class="line">yy =  -w[0] * xx / w[1]  - (clf.intercept_[0]) / w[1]</span><br><span class="line">b = clf.support_vectors_[0] # 第一个分类的支持向量，通过调整系数b</span><br><span class="line">yy_down = a * xx + (b[1] - a * b[0])</span><br><span class="line">b = clf.support_vectors_[-1] # 第二个分类中的支持向量</span><br><span class="line">yy_up = a * xx + (b[1] - a * b[0])</span><br><span class="line"></span><br><span class="line">pl.plot(xx, yy, &apos;k-&apos;)</span><br><span class="line">pl.plot(xx, yy_down, &apos;k--&apos;)</span><br><span class="line">pl.plot(xx, yy_up, &apos;k--&apos;)</span><br><span class="line">pl.scatter(clf.support_vectors_[:, 0], clf.support_vectors_[:, 1],</span><br><span class="line">           s=80, facecolors=&apos;none&apos;)</span><br><span class="line">pl.scatter(X[:, 0], X[:, 1], c=Y, cmap=pl.cm.Paired)</span><br><span class="line"></span><br><span class="line">pl.axis(&apos;tight&apos;)</span><br><span class="line">pl.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/04/21/SVM支持向量机/blog\source\_posts\SVM支持向量机\下载.png" alt=""></p>
+
       
     </div>
     
     
     
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------------本文结束<i class="fa fa-paw"></i>感谢阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/20/tensorflow中的softmax/" rel="next" title="tensorflow中的softmax">
+                <i class="fa fa-chevron-left"></i> tensorflow中的softmax
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -337,6 +475,10 @@
 
 
           
+
+  
+
+
 
         </div>
         

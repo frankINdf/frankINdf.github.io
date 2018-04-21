@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="softmax函数在机器学习中应用很广泛，神经网络中需要将正向传播的结果和的正确结果进行进行对比，softmax函数定义如下，它将分类结果映射到[0,1]这个区间,Vi、Vj表示V中第i，j个元素，ai可以看成第i个分类结果：$$a_i =\frac{e^{V _i}}{\sum_je^{V_j} }$$交叉熵C如下，其中yi代表真实值，ai在这里为softmax：$$C = -\sum_i{y_">
+<meta name="description" content="softmax函数在机器学习中应用很广泛，本文主要记录TensorFlow中的交叉熵计算函数用法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tensorflow中的softmax">
 <meta property="og:url" content="https://frankindf.github.io/2018/04/20/tensorflow中的softmax/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="softmax函数在机器学习中应用很广泛，神经网络中需要将正向传播的结果和的正确结果进行进行对比，softmax函数定义如下，它将分类结果映射到[0,1]这个区间,Vi、Vj表示V中第i，j个元素，ai可以看成第i个分类结果：$$a_i =\frac{e^{V _i}}{\sum_je^{V_j} }$$交叉熵C如下，其中yi代表真实值，ai在这里为softmax：$$C = -\sum_i{y_">
+<meta property="og:description" content="softmax函数在机器学习中应用很广泛，本文主要记录TensorFlow中的交叉熵计算函数用法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-20T15:43:18.126Z">
+<meta property="og:updated_time" content="2018-04-21T15:14:04.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow中的softmax">
-<meta name="twitter:description" content="softmax函数在机器学习中应用很广泛，神经网络中需要将正向传播的结果和的正确结果进行进行对比，softmax函数定义如下，它将分类结果映射到[0,1]这个区间,Vi、Vj表示V中第i，j个元素，ai可以看成第i个分类结果：$$a_i =\frac{e^{V _i}}{\sum_je^{V_j} }$$交叉熵C如下，其中yi代表真实值，ai在这里为softmax：$$C = -\sum_i{y_">
+<meta name="twitter:description" content="softmax函数在机器学习中应用很广泛，本文主要记录TensorFlow中的交叉熵计算函数用法。">
 
 
 
@@ -383,7 +383,9 @@
       
 
       
-        <p>softmax函数在机器学习中应用很广泛，神经网络中需要将正向传播的结果和的正确结果进行进行对比，softmax函数定义如下，它将分类结果映射到[0,1]这个区间,Vi、Vj表示V中第i，j个元素，ai可以看成第i个分类结果：<br>$$<br>a_i =\frac{e^{V _i}}{\sum_je^{V_j} }<br>$$<br>交叉熵C如下，其中yi代表真实值，ai在这里为softmax：<br>$$<br>C = -\sum_i{y_i{log(a_i)}}<br>$$<br>计算两者之间的差距,每项的Loss可以用下式表示，对于<strong>只有1个正确分类i的分类</strong>,softmax交叉熵计算公式如下：<br>$$<br>L_i = -log(\frac{e^{f _{y_i}}}{\sum_je^{f_{y_j}} }  )<br>$$<br>可以看到，括号里即为softmax的值，它越大，样本的Loss就越小，即与真实分布的差距越小。</p>
+        <p>softmax函数在机器学习中应用很广泛，本文主要记录TensorFlow中的交叉熵计算函数用法。</p>
+<a id="more"></a>
+<p>神经网络中需要将正向传播的结果和的正确结果进行进行对比，softmax函数定义如下，它将分类结果映射到[0,1]这个区间,Vi、Vj表示V中第i，j个元素，ai可以看成第i个分类结果：<br>$$<br>a_i =\frac{e^{V _i}}{\sum_je^{V_j} }<br>$$<br>交叉熵C如下，其中yi代表真实值，ai在这里为softmax：<br>$$<br>C = -\sum_i{y_i{log(a_i)}}<br>$$<br>计算两者之间的差距,每项的Loss可以用下式表示，对于<strong>只有1个正确分类i的分类</strong>,softmax交叉熵计算公式如下：<br>$$<br>L_i = -log(\frac{e^{f _{y_i}}}{\sum_je^{f_{y_j}} }  )<br>$$<br>可以看到，括号里即为softmax的值，它越大，样本的Loss就越小，即与真实分布的差距越小。</p>
 <p>在TensorFlow中交叉熵有下面几种计算方法：</p>
 <ul>
 <li><p>tf.nn.softmax_cross_entropy_with_logits（label, logits）</p>
@@ -437,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/20/tensorflow中损失函数的用法/" rel="next" title="tensorflow中损失函数的用法">
-                <i class="fa fa-chevron-left"></i> tensorflow中损失函数的用法
+              <a href="/2018/04/01/tensorboard用法/" rel="next" title="tensorboard应用">
+                <i class="fa fa-chevron-left"></i> tensorboard应用
               </a>
             
           </div>
@@ -446,6 +448,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/21/SVM支持向量机/" rel="prev" title="SVM支持向量机">
+                SVM支持向量机 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -513,7 +519,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -521,6 +527,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>

@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习," />
 
 
 
@@ -92,16 +92,18 @@
 
 
 
-<meta name="description" content="machine learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="阳阳的博客">
-<meta property="og:url" content="https://frankindf.github.io/index.html">
+<meta name="description" content="​        adaboost算法的核心思想就是由分类效果较差的弱分类器逐步的强化成一个分类效果较好的强分类器。而强化的过程，就是逐步的改变样本权重，样本权重的高低，代表其在分类器训练过程中的重要程度。">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="adaboost算法">
+<meta property="og:url" content="https://frankindf.github.io/2018/03/29/adaboost算法/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="machine learning">
+<meta property="og:description" content="​        adaboost算法的核心思想就是由分类效果较差的弱分类器逐步的强化成一个分类效果较好的强分类器。而强化的过程，就是逐步的改变样本权重，样本权重的高低，代表其在分类器训练过程中的重要程度。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-21T16:17:56.985Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阳阳的博客">
-<meta name="twitter:description" content="machine learning">
+<meta name="twitter:title" content="adaboost算法">
+<meta name="twitter:description" content="​        adaboost算法的核心思想就是由分类效果较差的弱分类器逐步的强化成一个分类效果较好的强分类器。而强化的过程，就是逐步的改变样本权重，样本权重的高低，代表其在分类器训练过程中的重要程度。">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://frankindf.github.io/"/>
+  <link rel="canonical" href="https://frankindf.github.io/2018/03/29/adaboost算法/"/>
 
 
 
 
 
-  <title>阳阳的博客</title>
+  <title>adaboost算法 | 阳阳的博客</title>
   
 
 
@@ -156,8 +158,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,557 +291,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/21/SVM支持向量机/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/21/SVM支持向量机/" itemprop="url">SVM支持向量机</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T18:46:53+08:00">
-                2018-04-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/21/SVM支持向量机/" class="leancloud_visitors" data-flag-title="SVM支持向量机">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>SVM是经典机器学习方法，本文主要是对SVM原理、求解等方面的理解。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/21/SVM支持向量机/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/20/tensorflow中的softmax/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/20/tensorflow中的softmax/" itemprop="url">tensorflow中的softmax</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T21:58:53+08:00">
-                2018-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/20/tensorflow中的softmax/" class="leancloud_visitors" data-flag-title="tensorflow中的softmax">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>softmax函数在机器学习中应用很广泛，本文主要记录TensorFlow中的交叉熵计算函数用法。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/20/tensorflow中的softmax/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/01/tensorboard用法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/01/tensorboard用法/" itemprop="url">tensorboard应用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T17:28:48+08:00">
-                2018-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/01/tensorboard用法/" class="leancloud_visitors" data-flag-title="tensorboard应用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>通过TensorBoard可以对神经网络结构和参数收敛有更深刻的理解，本文记录了TensorBoard的应用方法。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/01/tensorboard用法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/01/tensorflow卷积过程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/01/tensorflow卷积过程/" itemprop="url">tensorflow卷积函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T16:36:34+08:00">
-                2018-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/01/tensorflow卷积过程/" class="leancloud_visitors" data-flag-title="tensorflow卷积函数">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>卷积是卷积神经网络CNN中的重要操作，下面是TensorFlow中卷积函数的用法。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/01/tensorflow卷积过程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -870,9 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/29/adaboost算法/" itemprop="url">adaboost算法</a></h1>
+          <h1 class="post-title" itemprop="name headline">adaboost算法</h1>
         
 
         <div class="post-meta">
@@ -933,22 +384,31 @@
       
 
       
-        
-          <p>​        adaboost算法的核心思想就是由分类效果较差的弱分类器逐步的强化成一个分类效果较好的强分类器。而强化的过程，就是逐步的改变样本权重，样本权重的高低，代表其在分类器训练过程中的重要程度。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/29/adaboost算法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p>​        adaboost算法的核心思想就是由分类效果较差的弱分类器逐步的强化成一个分类效果较好的强分类器。而强化的过程，就是逐步的改变样本权重，样本权重的高低，代表其在分类器训练过程中的重要程度。</p>
+<a id="more"></a>
+<p>该算法首先定义辅助函数stumpClassify，输入数据，分界值后输出分类的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def stumpClassify(dataIn,dimen,threshVal,threshIneq):</span><br><span class="line">    #输入数据、采用哪列特征分类、分界的限值，是大于还是小于</span><br><span class="line">    m=dataIn.shape[0]</span><br><span class="line">    retArray=np.ones((m,1))</span><br><span class="line">    if threshIneq==&apos;lt&apos;:</span><br><span class="line">    #该分类是小于，则大于分界值得数据预测错误，定义为-1</span><br><span class="line">        retArray[dataIn[:,dimen]&lt;=threshVal]=-1.0</span><br><span class="line">    else:</span><br><span class="line">    #该分类是大于，则小于分界值得数据预测错误</span><br><span class="line">        retArray[dataIn[:,dimen]&gt;threshVal]=-1.0</span><br><span class="line">    return retArray</span><br></pre></td></tr></table></figure>
+<p>函数使用方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#定义输入数据</span><br><span class="line">dataIn=np.arange((12)).reshape(6,2)</span><br><span class="line">Out[43]: </span><br><span class="line">array([[ 0,  1],</span><br><span class="line">       [ 2,  3],</span><br><span class="line">       [ 4,  5],</span><br><span class="line">       [ 6,  7],</span><br><span class="line">       [ 8,  9],</span><br><span class="line">       [10, 11]])</span><br><span class="line">#以小于2的值作为第2列的分界点</span><br><span class="line">stumpClassify(dataIn,1,2,&apos;lt&apos;)</span><br><span class="line">Out[47]: </span><br><span class="line">array([[-1.],</span><br><span class="line">       [ 1.],</span><br><span class="line">       [ 1.],</span><br><span class="line">       [ 1.],</span><br><span class="line">       [ 1.],</span><br><span class="line">       [ 1.]])</span><br></pre></td></tr></table></figure>
+<p>​          有了分类函数，接着需要定义buildStump选取当前情况下，最佳的分类点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">def buildStump(dataIn,classLabel,D):</span><br><span class="line">#D为输入的分类权重，后面会用到</span><br><span class="line">    #输入数据，正确分类，迭代系数</span><br><span class="line">    n=dataIn.shape[1]</span><br><span class="line">    m=dataIn.shape[0]</span><br><span class="line">    numStep=10.0</span><br><span class="line">    bestStump=&#123;&#125;</span><br><span class="line">    bestClass=np.zeros((m,1))</span><br><span class="line">    minError=np.inf</span><br><span class="line">    for i in range(0,n):</span><br><span class="line">        iAxis=dataIn[:,i]</span><br><span class="line">        minAxis=min(iAxis)</span><br><span class="line">        maxAxis=max(iAxis)</span><br><span class="line">        stepSize=(maxAxis-minAxis)/numStep</span><br><span class="line">    	#考虑大于和小于两种分类情况</span><br><span class="line">        for ineq in [&apos;lt&apos;,&apos;gt&apos;]:</span><br><span class="line">            for j in range(-1,int(numStep)+1):</span><br><span class="line">            #每次计算错误值</span><br><span class="line">                threshVal=minAxis+stepSize*float(j)</span><br><span class="line">                #从threshVal值处对i特征值对应数据进行分类</span><br><span class="line">                predictCategory=stumpClassify(dataIn,i,threshVal,ineq)</span><br><span class="line">                #初始化误差值矩阵</span><br><span class="line">                errArr=np.ones((m,1))</span><br><span class="line">                #预测正确的点误差矩阵值为0，其他点为1</span><br><span class="line">                errArr[predictCategory==classLabel]=0</span><br><span class="line">                #误差矩阵乘以权重得到该threshVal的分类总误差，</span><br><span class="line">                errSum=np.dot(D.T,errArr)</span><br><span class="line">                #更新误差最小的threshVal</span><br><span class="line">                if errSum&lt;minError:</span><br><span class="line">                    minError=errSum</span><br><span class="line">                    bestClass=predictCategory.copy()</span><br><span class="line">                    bestStump[&apos;dim&apos;]=i</span><br><span class="line">                    bestStump[&apos;threshVal&apos;]=threshVal</span><br><span class="line">                    bestStump[&apos;ineq&apos;]=ineq</span><br><span class="line">    print(&apos;j&apos;,j,&apos;ineq&apos;,ineq,&apos;split&apos;,i,&apos;\nthresh&apos;,threshVal,&apos;\nerrorsum&apos;,errSum)</span><br><span class="line">    return bestStump,minError,bestClass</span><br><span class="line">    </span><br><span class="line">   classLabel=np.array(([[1],[-1],[-1],[1],[1],[1]]))    </span><br><span class="line">   buildStump(dataIn,classLabel,D)</span><br><span class="line">Out[56]: </span><br><span class="line">#得到当前权重下最佳分类</span><br><span class="line">#分类的特征为0列对应的特征，分类值为4，错误率0.167，分类结果[-1,-1,-1,1,1,1]</span><br><span class="line">(&#123;&apos;dim&apos;: 0, &apos;ineq&apos;: &apos;lt&apos;, &apos;threshVal&apos;: 4.0&#125;,</span><br><span class="line"> array([[ 0.16666667]]),</span><br><span class="line"> array([[-1.],</span><br><span class="line">        [-1.],</span><br><span class="line">        [-1.],</span><br><span class="line">        [ 1.],</span><br><span class="line">        [ 1.],</span><br><span class="line">        [ 1.]]))</span><br></pre></td></tr></table></figure>
+<p>​        得到了一列一种情况下的分类方法，就相当于有了一个分类器，adaboost的核心是将多个分类器的结果按照权重相加，得到最后的结果。下面通过addBoostTrainDS来训练得到各个分类器的权重。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">def addBoostTrainDS(dataIn,classLabels,numIt=40):</span><br><span class="line">    weakClassArr=[]</span><br><span class="line">    m=dataIn.shape[0]</span><br><span class="line">	#初始化D为1/m，m为数据个数</span><br><span class="line">    D=np.ones((m,1))/m</span><br><span class="line">    aggBestClass=np.zeros((m,1))</span><br><span class="line">    for i in range(numIt):</span><br><span class="line">     	#得到每次更新权重值后的最佳分类</span><br><span class="line">        bestStump,error,bestClass=buildStump(dataIn,classLabel,D)</span><br><span class="line">        #求出误差率alpha</span><br><span class="line">        alpha=0.5*np.log((1-error)/max(error,1e-12))</span><br><span class="line">        bestStump[&apos;alpha&apos;]=alpha</span><br><span class="line">        weakClassArr.append(bestStump)</span><br><span class="line">        #每一项的权重</span><br><span class="line">        expon=-1*alpha*(classLabels.T*bestClass)</span><br><span class="line">        print(&apos;expon&apos;,expon)</span><br><span class="line">        D=D*np.exp(expon)</span><br><span class="line">        D=D/D.sum()#更新D值</span><br><span class="line">        aggBestClass+=alpha*bestClass</span><br><span class="line">        #类别为1和-1</span><br><span class="line">        aggErrors=np.ones((m,1))</span><br><span class="line">        samePred=np.where(np.sign(aggBestClass)==classLabel)</span><br><span class="line">        difPred=np.where(np.sign(aggBestClass)!=classLabel)</span><br><span class="line">        aggErrors[samePred]=0</span><br><span class="line">        aggErrors[difPred]=1</span><br><span class="line">        print(&apos;D&apos;,D,&apos;best&apos;,bestClass,&apos;\naggBestClass&apos;,aggBestClass  </span><br><span class="line">        errorRate=aggErrors.sum()/m</span><br><span class="line">        print(&apos;totalError&apos;,errorRate)</span><br><span class="line">        if errorRate==0: break</span><br><span class="line">    return weakClassArr,aggErrors</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
     
     
     <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------------本文结束<i class="fa fa-paw"></i>感谢阅读-------------</div>
+    
+</div>
       
     </div>
     
@@ -959,14 +419,40 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/28/numpy的argsort函数用法/" rel="next" title="numpy的argsort函数用法">
+                <i class="fa fa-chevron-left"></i> numpy的argsort函数用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/01/tensorflow卷积过程/" rel="prev" title="tensorflow卷积函数">
+                tensorflow卷积函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -976,14 +462,11 @@
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -991,6 +474,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1210,6 +697,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1374,26 +865,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
