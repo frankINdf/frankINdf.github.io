@@ -100,7 +100,7 @@
 <meta property="og:description" content="本文主要分析逻辑回归的原理和自己的一点思考。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://frankindf.github.io/2018/04/22/LR算法/损失函数曲线.png">
-<meta property="og:updated_time" content="2018-04-22T15:13:18.507Z">
+<meta property="og:updated_time" content="2018-04-22T15:16:06.927Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LR算法">
 <meta name="twitter:description" content="本文主要分析逻辑回归的原理和自己的一点思考。">
@@ -390,13 +390,14 @@
 <p>算法原理：</p>
 <p>选取sigmoid函数作为logistic的概率分布函数<br>$$<br>P(Y=1|x) = \frac{\mathrm{exp}(wx+b)}{1+\mathrm{exp}(wx+b)}<br>$$</p>
 <p>$$<br>P(Y=0|x) = \frac{1}{1+\mathrm{exp}(wx+b)}<br>$$</p>
-<p>用线性模型$$wx+b$$逼近对数几率$$log \frac{y}{1-y}$$即<br>$$<br>log\frac{P(Y=1|x)}{P(Y=0|x)} = wx+b<br>$$<br>$$log\frac{P(Y=1|x)}{P(Y=0|x)} = wx+b​$$<br>$$<br>log\frac{P(Y=1|x)}{P(Y=0|x)} = wx+b<br>$$<br>对于0-1二分类，概率为p和1-p,符合伯努利分布，参数的似然函数为：<br>$$<br>L(W)=P(D|p_{yi})=\prod p^{yi}(1-p)^{1-yi}<br>$$<br>取对数<br>$$<br>logL = \sum  [ y_ilogp + (1-y_i)log(1-p) ]<br>$$</p>
+<p>用线性模型$$wx+b$$逼近对数几率$$log \frac{y}{1-y}$$即<br>$$<br>log\frac{P(Y=1|x)}{P(Y=0|x)} = wx+b<br>$$<br>对于0-1二分类，概率为p和1-p,符合伯努利分布，参数的似然函数为：<br>$$<br>L(W)=P(D|p_{yi})=\prod p^{yi}(1-p)^{1-yi}<br>$$<br>取对数<br>$$<br>logL = \sum  [ y_ilogp + (1-y_i)log(1-p) ]<br>$$</p>
 <p>$$<br>logL = \sum [ y_ilog \frac{p}{1-p} +log(1-p) ]<br>$$</p>
 <p>$$<br>logL = \sum [ y_i(w_ix+b) +\mathrm log(1+e^{w_ix+b)}<br>]<br>$$</p>
 <p>采用梯度下降法和牛顿法可以求解，下面介绍梯度下降法。</p>
-<p>对w求偏导,其中：<br>$$<br>\frac{\partial logL}{\partial w_i} = \sum x_i(yi-p_i)<br>$$<br>得到梯度后就可以迭代下个w<br>$$<br>w_{new}  =  w_{old} + \alpha \frac{\partial logL}{\partial w_i}<br>$$<br>也可以从损失函数的角度理解，$$y_i=1$$和$$y_i = 0$$时对数损失函数$$log(p(y|x))$$如下（将yi为0和1带入对数内部）：<br>$$<br>(h_ \theta(x),y )=\left{\begin {matrix} -y_ilog(h_ \theta(x)) ! \: \: \: \:  if\:  y = 1<br>\ -(1-y_i)log(1-h_ \theta(x)) ! \: \: \: \:  if\:  y = 0)</p>
-<p>\end{matrix}\right.<br>$$<br>联合起来，用一个式子表示：<br>$$<br>cost(h_ \theta(x),y )= -y_ilog(h_ \theta(x)) -(1-y_i)log(1-h_ \theta(x))<br>$$</p>
-<p>$$<br>cost(h_ \theta(x),y )= -\frac{1}{2}\sum (y_ilog(h_ \theta(x)) +(1-y_i)log(1-h_ \theta(x)))<br>$$</p>
+<p>对w求偏导,其中：<br>$$<br>\frac{\partial logL}{\partial w_i} = \sum x_i(yi-p_i)<br>$$<br>得到梯度后就可以迭代下个w<br>$$<br>w_{new}  =  w_{old} + \alpha \frac{\partial logL}{\partial w_i}<br>$$<br>也可以从损失函数的角度理解，$$y_i=1$$和$$y_i = 0$$时对数损失函数$$log(p(y|x))$$如下（将yi为0和1带入对数内部）：</p>
+<p>$$<br>cost (h_ \theta(x),y ) = \left{\begin {matrix} -y_ilog(h_ \theta(x)) ! \: \: \: \:  if\:  y = 1<br>\ -(1-y_i)log(1-h_ \theta(x)) ! \: \: \: \:  if\:  y = 0)</p>
+<p>\end{matrix}\right.<br>$$<br>联合起来，用一个式子表示：<br>$$<br>cost(h_ \theta(x),y ) = -y_ilog(h_ \theta(x)) -(1-y_i)log(1-h_ \theta(x))<br>$$</p>
+<p>$$<br>cost(h_ \theta(x),y ) =  -\frac{1}{2}\sum (y_ilog(h_ \theta(x)) +(1-y_i)log(1-h_ \theta(x)))<br>$$</p>
 <p>接下来计算和之前一样。</p>
 <p><strong>LR损失函数的形式，其实就是交叉熵。</strong></p>
 <p><strong>损失函数：</strong><br>LR使用对数损失对于sigmoid函数损失函数也可以表示成：<br>$$<br>L(y_i(wx+b)) = log_2(1+e^{y_i(wx+b)})<br>$$<br>损失函数的图像如下：</p>
