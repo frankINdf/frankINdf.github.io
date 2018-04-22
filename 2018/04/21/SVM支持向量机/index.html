@@ -100,7 +100,7 @@
 <meta property="og:description" content="SVM是经典机器学习方法，本文主要是对SVM原理、求解等方面的理解。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://frankindf.github.io/2018/04/21/SVM支持向量机/blog/source/_posts/SVM支持向量机/下载.png">
-<meta property="og:updated_time" content="2018-04-22T10:47:31.519Z">
+<meta property="og:updated_time" content="2018-04-22T10:51:03.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM支持向量机">
 <meta name="twitter:description" content="SVM是经典机器学习方法，本文主要是对SVM原理、求解等方面的理解。">
@@ -388,12 +388,12 @@
         <p>SVM是经典机器学习方法，本文主要是对SVM原理、求解等方面的理解。</p>
 <a id="more"></a>
 <p>SVM分类使用sigmoid函数判断结果。</p>
-<p><strong>几何角度的解释</strong>：不同分类之边界之间间隔最大化<br>$$<br>{\min_{w,b}}\frac{1}{2}\left | w \right |^2<br>$$</p>
-<p>$$<br>s.t. y_i(w^Tx_i+b)\geqslant 1 , i=1,2…,m.<br>$$</p>
+<p><strong>几何角度的解释</strong>：不同分类之边界之间间隔最大化<br>$$<br> {  min _ { w , b } } \frac{1}{2}\left | w \right |^2<br>$$</p>
+<p>$$<br>s . t .  y_i(w^Tx_i+b)\geqslant 1 , i=1,2…,m.<br>$$</p>
 <p><strong>损失函数最小解释</strong>：$1/2||w||^2$为结构化风险的L2正则项，损失函数为合页函数$l_{0/1}$为$max(0,f(x))$，<br>$$<br>{\min_{w,b}}\frac{1}{2}\left | w \right |^2 + C\sum_{i=1}^{m} l _{0/1}(y_i(w^Tx_i+b)-1)<br>$$</p>
 <p>$$<br>s.t     (y_i(w^Tx_i+b)-1)\leqslant 1-\xi _i<br>$$</p>
-<p>$$<br>\xi _i\geqslant 0<br>$$</p>
-<p>采用拉格朗日法：<br>$$<br>L(w,b,\xi,\alpha,\mu)=\frac{1}{2}\left | w \right |^2 + C\sum_{i=1}^{m} l _{0/1}+\sum_{m}^{i=1}\alpha_i[y_i(w^Tx_i+b-1+l_{0/1})]-\sum_{m}^{i=1}{\mu_i\xi_i}<br>$$<br>依次对$w,b,\xi_i$求偏导，得到<br>$$<br>\min_{w,b,\xi}L = \sum_{i=1}^{N}a_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N}a_i a_j y_i y_jK(x_i,x_j)<br>$$<br>原始问题满足KKT条件，对偶问题变为：<br>$$<br>\max \sum_{i=1}^{N}a_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N}a_i a_j y_i y_jK(x_i,x_j)<br>$$</p>
+<p>$$<br>\xi _ i \geqslant 0<br>$$</p>
+<p>采用拉格朗日法：<br>$$<br>L(w,b,\xi,\alpha,\mu) = \frac{1}{2}\left | w \right |^2 + C\sum_{i=1}^{m} l _{0/1}+\sum_{m}^{i=1}\alpha_i[y_i(w^Tx_i+b-1+l_{0/1})]-\sum_{m}^{i=1}{\mu_i\xi_i}<br>$$<br>依次对$w,b,\xi_i$求偏导，得到<br>$$<br>\min_{w,b,\xi}L = \sum_{i=1}^{N}a_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N}a_i a_j y_i y_jK(x_i,x_j)<br>$$<br>原始问题满足KKT条件，对偶问题变为：<br>$$<br>\max \sum_{i=1}^{N}a_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N}a_i a_j y_i y_jK(x_i,x_j)<br>$$</p>
 <p>$$<br>s.t.\space\sum_{j=1}^{N}a_iy_i=0<br>$$</p>
 <p>$$<br>0 \leqslant a_iy_i \leqslant C<br>$$</p>
 <p><strong>惩罚因子</strong>C: C代表对损失函数的惩罚程度，C越大损失函数对优化影响越大，损失函数取的系数C正无穷时，不允许有异常点，即为硬间隔。</p>
