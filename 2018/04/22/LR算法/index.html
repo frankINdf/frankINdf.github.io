@@ -100,7 +100,7 @@
 <meta property="og:description" content="本文主要分析逻辑回归的原理和自己的一点思考。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://frankindf.github.io/2018/04/22/LR算法/损失函数曲线.png">
-<meta property="og:updated_time" content="2018-04-22T15:18:41.522Z">
+<meta property="og:updated_time" content="2018-04-22T15:26:14.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LR算法">
 <meta name="twitter:description" content="本文主要分析逻辑回归的原理和自己的一点思考。">
@@ -395,7 +395,7 @@
 <p>$$<br>logL = \sum [ y_i(w_ix+b) +\mathrm log(1+e^{w_ix+b)}<br>]<br>$$</p>
 <p>采用梯度下降法和牛顿法可以求解，下面介绍梯度下降法。</p>
 <p>对w求偏导,其中：<br>$$<br>\frac{\partial logL}{\partial w_i} = \sum x_i(yi-p_i)<br>$$<br>得到梯度后就可以迭代下个w<br>$$<br>w_{new}  =  w_{old} + \alpha \frac{\partial logL}{\partial w_i}<br>$$<br>也可以从损失函数的角度理解，$$y_i=1$$和$$y_i = 0$$时对数损失函数$$log(p(y|x))$$如下（将yi为0和1带入对数内部）：</p>
-<p>$$<br>cost (h_ \theta(x),y ) = \left{\begin {matrix} -y_ilog(h_ \theta(x)) ! \: \: \: \:  if\:  y = 1<br>\ -(1-y_i)log(1-h_ \theta(x)) ! \: \: \: \:  if\:  y = 0<br>\end{matrix}\right.<br>$$<br>$$ cost (h_ \theta(x),y ) = \left{\begin {matrix} -y_ilog(h_ \theta(x)) ! \: \: \: \:  if\:  y = 1<br>\ -(1-y_i)log(1-h_ \theta(x)) ! \: \: \: \:  if\:  y = 0<br>\end{matrix}\right. $$</p>
+<p>$$<br>cost  ( h  _ \theta (x) , y )  =  \left{\begin {matrix} -y_ilog(h_ \theta(x)) ! \: \: \: \:  if\:  y = 1\ -(1-y_i)log(1-h_ \theta(x)) ! \: \: \: \:  if\:  y = 0\end{matrix}\right.<br>$$</p>
 <p>联合起来，用一个式子表示：<br>$$<br>cost(h_ \theta(x),y ) = -y_ilog(h_ \theta(x)) -(1-y_i)log(1-h_ \theta(x))<br>$$</p>
 <p>$$<br>cost(h_ \theta(x),y ) =  -\frac{1}{2}\sum (y_ilog(h_ \theta(x)) +(1-y_i)log(1-h_ \theta(x)))<br>$$</p>
 <p>接下来计算和之前一样。</p>
@@ -447,6 +447,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/决策树/" rel="prev" title="决策树">
+                决策树 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -514,7 +518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
