@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frankindf.github.io/"/>
-  <updated>2018-04-22T15:36:29.089Z</updated>
+  <updated>2018-04-23T13:35:49.659Z</updated>
   <id>https://frankindf.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最大熵算法</title>
+    <link href="https://frankindf.github.io/2018/04/23/%E6%9C%80%E5%A4%A7%E7%86%B5%E7%AE%97%E6%B3%95/"/>
+    <id>https://frankindf.github.io/2018/04/23/最大熵算法/</id>
+    <published>2018-04-23T12:24:20.000Z</published>
+    <updated>2018-04-23T13:35:49.659Z</updated>
+    
+    <content type="html"><![CDATA[<p>最大熵原理和$logistic$、最大熵马科夫模型都有关，本文是最大熵模型的学习记录。</p><a id="more"></a><p>模型在满足已有的约束条件的情况下，约束外的部分熵越大，模型越好。<br>即对于已知部分，要尽可能确定。<br>对于未知的部分，要保证不确定性。<br>任何其它的选择都意味着我们增加了其它的约束和假设，这些约束和假设根据我们掌握的信息无法作出。<br>举个例子，若只有约束$P_a+P_b+P_c=1$，则最优的模型每次a、b、c出现的概率均相同，因为只有这种情况才没有新增信息。</p><p>最大熵模型就是要使熵最大化，同时要满足经验分布的期望和模型的期望相同即$E_p = E _\tilde p$:<br>$$<br>{max} H(P) = - \sum _{x,y}\tilde{P}(x)P(x|y)logP(x|y)<br>$$</p><p>$$<br>s.t.\: \: E_p(f_i) = E_{\tilde{p}}(f_i) , i=1,2,3…<br>$$</p><p>$$<br>\sum _{y} P(y|x) = 1<br>$$</p><p>其中,$\tilde{p}$为经验分布<br>约束条件下求极值，可以用拉格朗日乘子法进行求解。</p><p>1）写出拉格朗日乘子方程：<br>$$<br>L(P,W) = -H(P) + w_0(1-\sum _{y}P(y|x)) + \sum _{i=1}^{n}(E_{\tilde{p}}(f_i) - E_p(f_i))<br>$$<br>由$E_\tilde   p = \sum \tilde{P}(x,y)f(x,y)$和$E_p =\sum \tilde{P}(x)P(y|x)f(x,y)$可得：<br>$$<br>L(P,W) = \sum\tilde{P}(x) P(y|x)logP(y|x)+w_0(\sum_{y} P(y|x)-1) \\</p><ul><li>w_i(\sum \tilde{P}(x,y)f(x,y)-\sum \tilde{P}(x)P(y|x)f(x,y))<br>$$</li></ul><p>L是相当于求$min _{P\in C}max _{w}L(P,w)$</p><p>根据对偶原理，可以将$minL(P,w)$转化为求$maxL(P,w)$,问题转化为：<br>$$\min _{P\in C}\max _{w}L(P,w) = \max _{w} \min _{P\in C}L(P,w)$$<br>最终需要求解：<br>$$P_w = arg \min _{P\in C}L(P,w) = L(P,w)$$<br>求解方法一：<br>求偏导<br>$$\frac{\partial L}{\partial P(y|x)} =\sum _{x,y}\tilde{P}(x)(logP(y|x)+1-w_0-\sum ^{n}_{i=1}w_if_i(x,y))$$<br>偏导为0，可以求出$P(y|x)$:<br>$$P(y|x) = exp(\sum ^{n} _{i=1}w_if_i(x,y) + w_0-1)$$<br>由$\sum _{y} P(y|x) = 1$可得<br>$$exp(1-w_0) = \sum exp(\sum^{n} _{i=1}w_if_i(x,y)) $$<br>可以得到<br>$$<br>P(y|x) = \frac{exp(\sum ^{n} _{i=1}w_if_i(x,y))}{Z_w(x)}<br>$$<br>代入L(x)可以求得:<br>$$<br>L(P,W) = \sum\tilde{P}(x) P(y|x)logP(y|x) +  w_i(\sum \tilde{P}(x,y)f(x,y)-\sum \tilde{P}(x)P(y|x)f(x,y))<br>\\=\sum_{x,y}\tilde{P}(x) P(y|x)(logP(y|x) - \sum _{i=1} ^{n}w_if_i(x,y))+\sum_{x,y}\tilde{P}(x) \sum _{i=1} ^{n}w_if_i(x,y)<br>\\=\sum_{x,y}\tilde{P}(x) \sum _{i=1} ^{n}w_if_i(x,y)- \sum_{x,y}\tilde{P}(x) P(y|x)logZ_w(x)<br>\\=\sum_{x,y}\tilde{P}(x) \sum _{i=1} ^{n}w_if_i(x,y)- \sum_{x}\tilde{P}(x) logZ_w(x)<br>$$<br>求解方法二：<br>最大似然估计求解对数似然函数，参考$logistic$回归中的内容。</p><p>条件概率分布$P(X|Y)$的对数似然函数为：<br>$$<br>L_\tilde{p}(P_w) = log \prod_{x,y}P(y|x)^{\tilde{p}(x,y)}<br>$$<br>将$P(y|x) = \frac{exp(\sum ^{n} _{i=1}w_if_i(x,y))}{Z_w(x)}$代入<br>$$<br>L_\tilde{p}(P_w) =\sum_{x,y}\tilde{P}(x) \sum _{i=1} ^{n}w_if_i(x,y)- \sum_{x}\tilde{P}(x) logZ_w(x)<br>$$<br><strong>一点思考</strong><br>1.最大熵为什么可以保证模型最优化<br>2.最大熵算法和LR的联系</p><p>可以看到当</p><p>3.最大熵模型原理比较重要的推导：</p><ul><li>p(y|x)求和为1</li><li>经验分布和模型的期望相等<br>​</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最大熵原理和$logistic$、最大熵马科夫模型都有关，本文是最大熵模型的学习记录。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>决策树</title>
