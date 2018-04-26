@@ -92,16 +92,17 @@
 
 
 
-<meta name="description" content="machine learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="阳阳的博客">
-<meta property="og:url" content="https://frankindf.github.io/page/2/index.html">
+<meta name="description" content="使用隐马尔科夫模型可以解决有隐藏状态的观测序列问题，本文是对隐马尔科夫模型的学习记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="隐马尔科夫模型">
+<meta property="og:url" content="https://frankindf.github.io/2018/04/26/隐马尔科夫模型/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="machine learning">
+<meta property="og:description" content="使用隐马尔科夫模型可以解决有隐藏状态的观测序列问题，本文是对隐马尔科夫模型的学习记录。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-26T15:59:40.206Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阳阳的博客">
-<meta name="twitter:description" content="machine learning">
+<meta name="twitter:title" content="隐马尔科夫模型">
+<meta name="twitter:description" content="使用隐马尔科夫模型可以解决有隐藏状态的观测序列问题，本文是对隐马尔科夫模型的学习记录。">
 
 
 
@@ -131,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://frankindf.github.io/page/2/"/>
+  <link rel="canonical" href="https://frankindf.github.io/2018/04/26/隐马尔科夫模型/"/>
 
 
 
 
 
-  <title>阳阳的博客</title>
+  <title>隐马尔科夫模型 | 阳阳的博客</title>
   
 
 
@@ -156,8 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,9 +290,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/22/LR算法/">
+    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/26/隐马尔科夫模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="阳阳">
@@ -322,9 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/22/LR算法/" itemprop="url">LR算法</a></h1>
+          <h1 class="post-title" itemprop="name headline">隐马尔科夫模型</h1>
         
 
         <div class="post-meta">
@@ -336,8 +334,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T20:36:45+08:00">
-                2018-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T23:51:53+08:00">
+                2018-04-26
               </time>
             
 
@@ -354,7 +352,7 @@
 
           
           
-             <span id="/2018/04/22/LR算法/" class="leancloud_visitors" data-flag-title="LR算法">
+             <span id="/2018/04/26/隐马尔科夫模型/" class="leancloud_visitors" data-flag-title="隐马尔科夫模型">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -385,22 +383,42 @@
       
 
       
-        
-          <p>本文主要分析逻辑回归的原理和自己的一点思考。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/22/LR算法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p>使用隐马尔科夫模型可以解决有隐藏状态的观测序列问题，本文是对隐马尔科夫模型的学习记录。</p>
+<a id="more"></a>
+<p>隐马尔科夫要解决的问题：<br>前提：<br>初始状态矩阵$\pi$<br>状态转移矩阵A<br>观测概率矩阵B</p>
+<p>假设条件：<br>齐次假设：$t$时刻的状态只依赖于$t-1$时刻的状态<br>观测独立性假设：任意时刻状态值依赖此刻的马尔科夫链的状态</p>
+<p>在有观测不到的隐藏状态时，解决下面3个问题：<br>1）给定一个观测序列，怎计算这个序列出现的概率,即概率问题<br>2）已经有一个观测序列，怎么估计出A、B、$\pi$使其在该序列下出现可能最大，即学习问题<br>3）在给定观测序列后计算条件概率最大的<strong>状态序列</strong>，预测问题<br>针对问题1通常使用前向算法和后向算法：<br>定义<br>$$<br>\alpha_t(i) = P(O_1,O_2,…,O_t,i_t=q_i|\lambda)<br>$$<br>$A{ij}$代表状态由i转移到j的概率，$b_{j}(o_1)$代表状态j时，观测到$o_1$的概率</p>
+<p>对于初始值,在i状态下观测到o_1<br>$$<br>\alpha_1 = \pi_ib_i(o1)<br>$$</p>
+<p>对于$t=1,2,…,T-1$,t时刻在j状态，t+1时刻在i状态，在t+1观测到$o_{t+1}$的概率如下：<br>$$<br>\alpha_{t+1}(i) = [\sum _{j=1} ^{N} \alpha_{t}(j)a_ji]b_i(o_{t+1})<br>$$</p>
+<p>观测到序列O：<br>$$<br>P(O|\lambda) = \sum_{i=1}^{N}\alpha_{T}(i)<br>$$<br>后向算法：<br>$$<br>\beta_t(i) = P(o_{t+1},o_{t+2},…,o_T|i_t=q_i,\lambda)<br>$$</p>
+<p>$t$时刻的状态为$q_i$,从$t+1$到$T$部分观测序列为$o_t+1,o_t+2,…,o_T$的概率为后向概率<br>最终时刻为T，T+1不存在，所以令$\beta_T(i) = 1$<br>在$t = T-1,T-2,…,1$可以看到从$T-1$开始递减<br>$\beta_t(i) = \sum_{j=1}^{N}a_ijb_j(o_{t+1}\beta_{t+1}(j))$<br>将前面的项代入：<br>$$<br>P(O|\lambda) = \sum_{i=1}^{N}\pi_ib_i(o_1)\beta_1(i)<br>$$<br>可以统一写成<br>$$<br>P(O|\lambda) = \sum_{i=1} ^{N}\sum_{j=1} ^{N}\alpha _t(i)a_{ij}b_{j}(o_{t+1})\beta_{t+1}(j)<br>$$<br>单个状态概率的计算公式：<br>时刻t处于状态$q_i$的概率，<br>$$<br>\gamma_t(i) = P(i_t = q_i|O,\lambda)=\frac{i_t=q_i,O|\lambda}{P(O|lambda)}<br>$$</p>
+<p>由于前t个数据观测到qi的概率乘以从后面开始观察到$q_i$的概率<br>$$<br>\alpha_ t(i)\beta _t(i) = P(i_t=q_i,O|\lambda)<br>$$<br>得到：<br>$$<br>\gamma_t(i)=\frac{\alpha_t(i)\beta_t(i)}{\sum_{j=1}^{N}\alpha_t(j)\beta_t(j)}<br>$$<br>在t时刻处于q_i,t+1时刻处于q_j的概率<br>$$<br>\xi_t(i,j) = \frac{P(i_t=q_i,i_{t+1}=q_j,O|\lambda)}{\sum_{i=1}^{N}\sum_{j=1}^{N}P(i_t = q_i,i_{t+1}=q_j,O|\lambda)}<br>$$</p>
+<p>$$<br>P(i_t=q_i,i_{t+1}=q_j,O|\lambda) = \alpha_t(i)a_{ij}b_{j}(o_{t+1})\beta_{t+1}(j)<br>$$</p>
+<p>$$<br>\xi_t(i,j) = \frac{\alpha_t(i)a_{ij}b_{j}(o_{t+1})\beta_{t+1}(j)}{\sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_t(i)a_{ij}b_{j}(o_{t+1})\beta_{t+1}(j)}<br>$$</p>
+<p>Baum-Welch算法<br>1.确定对数似然函数$logP(O,I|\lambda)$<br>2.E步，推断概率分布，并求期望<br>$$<br>Q(\lambda,\bar{\lambda}) = E_Ilog(P(O,I|\lambda))<br>$$</p>
+<p>$$<br>Q(\lambda,\bar{\lambda}) = \sum_{I}logP(O,I|\lambda)P(O,I|\bar{\lambda})<br>$$</p>
+<p>3.M步,计算估计参数下<br>$$<br>\pi_i = \frac{P(O,i_1=i|\bar{\lambda})}{P(O|\bar{\lambda})}=\gamma_1(i)<br>$$</p>
+<p>$$<br>a_{ij} = \frac{\sum_{t=1}^{T-1}P(O,i_t=i,i_{t+1}=j|\bar{\lambda})}{\sum_{t=1}^{T-1}P(O,i_t=i|\bar{lambda})}=\frac{\sum_{t=1}^{T-1}\xi_t(i,j)}{\gamma _t(i)}<br>$$</p>
+<p>$$<br>b_j(k) = \frac{\sum_{t=1}^{T}P(O,i_t=j)|\bar{\lambda})I(o_t=v_k)}{\sum_{t=1}^{T}P(O,i_t=j|bar{lambda})} = \frac{\sum _{t=1} ^{T}\gamma_t(j)}{\sum_{t=1}^{T}\gamma_t(j)}<br>$$</p>
+<p>维比特算法<br>贪心算法，如果当前路径为最优路径，则当前路径前一步也是最优路径。<br>初始化<br>$$<br>\delta_1(i) = pi_ib_i(o_1)<br>$$</p>
+<p>$$<br>\psi_1(i)=0<br>$$</p>
+<p>递推<br>$$<br>\delta_t(i) = max_{1\leqslant j \leqslant N} [\delta _{t-1}(j)a_{ji}]b_i(o_1)<br>$$</p>
+<p>$$<br>\psi_t(i) = arg max_{1\leqslant j \leqslant N} [\delta _{t-1}(j)a_{ji}]<br>$$</p>
+<p>终止<br>$$<br>\delta_t(i) = max_{1\leqslant j \leqslant N} \delta _T(i)<br>$$</p>
+<p>$$<br>\psi_t(i) = arg max_{1\leqslant j \leqslant N} [\delta _{T}(i)]<br>$$</p>
+
       
     </div>
     
     
     
     <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------------本文结束<i class="fa fa-paw"></i>感谢阅读-------------</div>
+    
+</div>
       
     </div>
     
@@ -413,149 +431,32 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/21/SVM支持向量机/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/21/SVM支持向量机/" itemprop="url">SVM支持向量机</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T18:46:53+08:00">
-                2018-04-21
-              </time>
+              <a href="/2018/04/26/拉格朗日对偶/" rel="next" title="拉格朗日对偶">
+                <i class="fa fa-chevron-left"></i> 拉格朗日对偶
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2018/04/27/jieba分词实践/" rel="prev" title="jieba分词实践">
+                jieba分词实践 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/21/SVM支持向量机/" class="leancloud_visitors" data-flag-title="SVM支持向量机">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>SVM是经典机器学习方法，本文主要是对SVM原理、求解等方面的理解。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/21/SVM支持向量机/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -565,425 +466,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/20/tensorflow中的softmax/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/20/tensorflow中的softmax/" itemprop="url">tensorflow中的softmax</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T21:58:53+08:00">
-                2018-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/20/tensorflow中的softmax/" class="leancloud_visitors" data-flag-title="tensorflow中的softmax">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>softmax函数在机器学习中应用很广泛，本文主要记录TensorFlow中的交叉熵计算函数用法。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/20/tensorflow中的softmax/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/01/tensorboard用法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/01/tensorboard用法/" itemprop="url">tensorboard应用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T17:28:48+08:00">
-                2018-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/01/tensorboard用法/" class="leancloud_visitors" data-flag-title="tensorboard应用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>通过TensorBoard可以对神经网络结构和参数收敛有更深刻的理解，本文记录了TensorBoard的应用方法。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/01/tensorboard用法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/01/tensorflow卷积过程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/01/tensorflow卷积过程/" itemprop="url">tensorflow卷积函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T16:36:34+08:00">
-                2018-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/01/tensorflow卷积过程/" class="leancloud_visitors" data-flag-title="tensorflow卷积函数">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>卷积是卷积神经网络CNN中的重要操作，下面是TensorFlow中卷积函数的用法。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/01/tensorflow卷积过程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
 
 
           </div>
@@ -991,6 +478,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1210,6 +701,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
