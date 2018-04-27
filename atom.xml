@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frankindf.github.io/"/>
-  <updated>2018-04-27T16:19:35.759Z</updated>
+  <updated>2018-04-27T16:50:10.831Z</updated>
   <id>https://frankindf.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python实践记录</title>
+    <link href="https://frankindf.github.io/2018/04/28/python%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/"/>
+    <id>https://frankindf.github.io/2018/04/28/python实践记录/</id>
+    <published>2018-04-27T16:24:01.000Z</published>
+    <updated>2018-04-27T16:50:10.831Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文主要记录python实践过程中的一些知识点。</p><a id="more"></a><p><strong>os模块</strong></p><p>os.walk(path) 得到</p><p>输入：文件夹路径</p><p>返回：三元tupple依次是(dirpath,dirnames,filenames)</p><p>os.path.basename()</p><p>输入：文件路径</p><p>输出：当前文件夹名</p><p>os.paht.dirname</p><p>输入：文件路径</p><p>输出：根目录名</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">path = r&apos;D:\path&apos;</span><br><span class="line">print(list(os.walk(path)))</span><br><span class="line">out:</span><br><span class="line">[(&apos;D:\\path&apos;, [&apos;to&apos;], [&apos;FILEINto.txt&apos;]),</span><br><span class="line">(&apos;D:\\path\\to&apos;, [&apos;MNIST_data&apos;], [&apos;fileInMNIST.rar&apos;]), </span><br><span class="line">(&apos;D:\\path\\to\\MNIST_data&apos;, [], [&apos;t10k-images-idx3-ubyte.gz&apos;, &apos;t10k-labels-idx1-ubyte.gz&apos;, &apos;train-images-idx3-ubyte.gz&apos;, &apos;train-labels-idx1-ubyte.gz&apos;])]</span><br></pre></td></tr></table></figure><p>打印文件夹结构</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">def fileCntIn(currPath):    </span><br><span class="line">    #计算总路径内文件数，通过将每个文件夹内文件数相加</span><br><span class="line">    return sum([len(files) for root, dirs, files in os.walk(currPath)])    </span><br><span class="line">    </span><br><span class="line">def dirsTree(startPath):    </span><br><span class="line">    &apos;&apos;&apos;&apos;&apos;&apos;&apos;树形打印出目录结构&apos;&apos;&apos;    </span><br><span class="line">    for root, dirs, files in os.walk(startPath):    </span><br><span class="line">        #获取当前目录下文件数    </span><br><span class="line">        fileCount = fileCntIn(root)    </span><br><span class="line">        #获取当前目录相对输入目录的层级关系,整数类型，os.sep为跨平台分割符    </span><br><span class="line">        level = root.replace(startPath, &apos;&apos;).count(os.sep)    </span><br><span class="line">        #树形结构显示关键语句    </span><br><span class="line">        #根据目录的层级关系，重复显示&apos;| &apos;间隔符，    </span><br><span class="line">        #第一层 &apos;| &apos;    </span><br><span class="line">        #第二层 &apos;| | &apos;    </span><br><span class="line">        #第三层 &apos;| | | &apos;    </span><br><span class="line">        #依此类推...    </span><br><span class="line">        #在每一层结束时，合并输出 &apos;|____&apos;    </span><br><span class="line">        indent = &apos;| &apos; * 1 * level + &apos;|____&apos;    </span><br><span class="line">        print（&apos;%s%s -r:%s&apos; % (indent, os.path.split(root)[1], fileCount))</span><br><span class="line">        for file in files:  </span><br><span class="line">            indent = &apos;| &apos; * 1 * (level+1) + &apos;|____&apos;    </span><br><span class="line">            print(&apos;%s%s&apos; % (indent, file))   </span><br><span class="line">    </span><br><span class="line">if __name__ == &apos;__main__&apos;:    </span><br><span class="line">dirsTree(path)  </span><br><span class="line">out:</span><br><span class="line">|____path -r:6</span><br><span class="line">| |____FILEINto.txt</span><br><span class="line">| |____to -r:5</span><br><span class="line">| | |____fileInMNIST.rar</span><br><span class="line">| | |____MNIST_data -r:4</span><br><span class="line">| | | |____t10k-images-idx3-ubyte.gz</span><br><span class="line">| | | |____t10k-labels-idx1-ubyte.gz</span><br><span class="line">| | | |____train-images-idx3-ubyte.gz</span><br><span class="line">| | | |____train-labels-idx1-ubyte.gz</span><br></pre></td></tr></table></figure><p><strong>glob模块</strong></p><p>glob 查找符合特定规则的文件路径名<br>glob.glob(path)</p><p>输入文件夹路径</p><p>返回特定文件路径</p><p>glob.iglob(path)</p><p>返回迭代器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">path = r&apos;D:\path\to\MNIST_data\*.rar&apos;</span><br><span class="line">print(glob.glob(path))</span><br><span class="line">out:</span><br><span class="line">[&apos;D:\\path\\to\\MNIST_data\\t10k-images-idx3-ubyte.gz&apos;, &apos;D:\\path\\to\\MNIST_data\\t10k-labels-idx1-ubyte.gz&apos;, &apos;D:\\path\\to\\MNIST_data\\train-images-idx3-ubyte.gz&apos;, &apos;D:\\path\\to\\MNIST_data\\train-labels-idx1-ubyte.gz&apos;]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文主要记录python实践过程中的一些知识点。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>jieba分词实践</title>
