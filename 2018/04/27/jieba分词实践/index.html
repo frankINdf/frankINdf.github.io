@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="1234567import jiebas = u&amp;apos;我想要在中广核的海滩边上走一走&amp;apos;#cut方法cut = jieba.cut(s)list(cut)[&amp;apos;我&amp;apos;, &amp;apos;想要&amp;apos;, &amp;apos;在&amp;apos;, &amp;apos;中广核&amp;apos;, &amp;apos;的&amp;apos;, &amp;apos;海滩&amp;apos;, &amp;apos;边上&amp;apos;, &amp;apos">
+<meta name="description" content="本文主要是jieba分词的学习记录。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jieba分词实践">
 <meta property="og:url" content="https://frankindf.github.io/2018/04/27/jieba分词实践/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="1234567import jiebas = u&amp;apos;我想要在中广核的海滩边上走一走&amp;apos;#cut方法cut = jieba.cut(s)list(cut)[&amp;apos;我&amp;apos;, &amp;apos;想要&amp;apos;, &amp;apos;在&amp;apos;, &amp;apos;中广核&amp;apos;, &amp;apos;的&amp;apos;, &amp;apos;海滩&amp;apos;, &amp;apos;边上&amp;apos;, &amp;apos">
+<meta property="og:description" content="本文主要是jieba分词的学习记录。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-26T16:01:32.375Z">
+<meta property="og:updated_time" content="2018-04-27T16:19:35.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jieba分词实践">
-<meta name="twitter:description" content="1234567import jiebas = u&amp;apos;我想要在中广核的海滩边上走一走&amp;apos;#cut方法cut = jieba.cut(s)list(cut)[&amp;apos;我&amp;apos;, &amp;apos;想要&amp;apos;, &amp;apos;在&amp;apos;, &amp;apos;中广核&amp;apos;, &amp;apos;的&amp;apos;, &amp;apos;海滩&amp;apos;, &amp;apos;边上&amp;apos;, &amp;apos">
+<meta name="twitter:description" content="本文主要是jieba分词的学习记录。">
 
 
 
@@ -383,7 +383,9 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br><span class="line">s = u&apos;我想要在中广核的海滩边上走一走&apos;</span><br><span class="line">#cut方法</span><br><span class="line">cut = jieba.cut(s)</span><br><span class="line">list(cut)</span><br><span class="line">[&apos;我&apos;, &apos;想要&apos;, &apos;在&apos;, &apos;中广核&apos;, &apos;的&apos;, &apos;海滩&apos;, &apos;边上&apos;, &apos;走&apos;, &apos;一&apos;, &apos;走&apos;]</span><br><span class="line">s = u&apos;武汉市长江大桥和武汉市长姜大桥。&apos;</span><br></pre></td></tr></table></figure>
+        <p>本文主要是jieba分词的学习记录。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br><span class="line">s = u&apos;我想要在中广核的海滩边上走一走&apos;</span><br><span class="line"></span><br><span class="line"># cut方法</span><br><span class="line"></span><br><span class="line">cut = jieba.cut(s)</span><br><span class="line">list(cut)</span><br><span class="line">[&apos;我&apos;, &apos;想要&apos;, &apos;在&apos;, &apos;中广核&apos;, &apos;的&apos;, &apos;海滩&apos;, &apos;边上&apos;, &apos;走&apos;, &apos;一&apos;, &apos;走&apos;]</span><br><span class="line">s = u&apos;武汉市长江大桥和武汉市长姜大桥。&apos;</span><br></pre></td></tr></table></figure>
 <p>全模式<br>尽量分成更多的词</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;,&apos;.join(jieba.cut(s,cut_all = True))</span><br><span class="line">&apos;武汉,武汉市,市长,长江,长江大桥,大桥,和,武汉,武汉市,市长,姜,大桥&apos;</span><br><span class="line">&apos;,&apos;.join(jieba.cut_for_search(s))</span><br><span class="line">&apos;武汉,武汉市,长江,大桥,长江大桥,和,武汉,武汉市,长姜,大桥&apos;</span><br></pre></td></tr></table></figure>
 <p>获取词性可以用jieba.posseg</p>
