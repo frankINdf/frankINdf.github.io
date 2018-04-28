@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://frankindf.github.io/"/>
-  <updated>2018-04-28T13:57:11.595Z</updated>
+  <updated>2018-04-28T15:29:40.367Z</updated>
   <id>https://frankindf.github.io/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python的pickle模块</title>
+    <link href="https://frankindf.github.io/2018/04/28/python%E7%9A%84pickle%E6%A8%A1%E5%9D%97/"/>
+    <id>https://frankindf.github.io/2018/04/28/python的pickle模块/</id>
+    <published>2018-04-28T15:01:12.000Z</published>
+    <updated>2018-04-28T15:29:40.367Z</updated>
+    
+    <content type="html"><![CDATA[<p>python的pickle模块可以存储python数据文件，本文是该模块的学习记录。</p><h4 id="pickle常用方法"><a href="#pickle常用方法" class="headerlink" title="pickle常用方法"></a><strong>pickle常用方法</strong></h4><h5 id="序列化和反序列化："><a href="#序列化和反序列化：" class="headerlink" title="序列化和反序列化："></a>序列化和反序列化：</h5><p>序列化就是把计算得到的数据保存起来，当需要使用时反序列化把数据恢复，这样有如下好处：</p><ol><li>被pickle的数据，在被多次reload时，不需要重新去计算得到这些数据，这样节省计算机资源，如果你不pickle，你每调用一次数据，就要计算一次。</li><li>通过pickle的数据，被reload时，可以更好的被内存调用，不需要经过数据格式的转换。</li></ol><p>pickle.dump(obj,file,protocol,)</p><p>将obj保存为文件</p><p>pickle.load(file)</p><p>读取pickle文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import pickle  </span><br><span class="line">t1=[&apos;a&apos;,3,4]</span><br><span class="line">with open(&apos;temp.pkl&apos;,&apos;wb+&apos;) as f: </span><br><span class="line">v1 = pickle.dump(t1)</span><br><span class="line">#可以看到文件夹里多了temp.pkl</span><br><span class="line">with open(&apos;d:temp.pkl&apos;,&apos;rb&apos;) as f: </span><br><span class="line">    v2=pickle.load(f)</span><br><span class="line">    print(v2)</span><br></pre></td></tr></table></figure><p>pickle.dumps(obj)</p><p>将obj保存为pickle对象</p><p>pickle.loads(obj)</p><p>读取pickle对象</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># dumps功能</span><br><span class="line">import pickle</span><br><span class="line">data = [3,6,8]  </span><br><span class="line"># dumps 将数据通过特殊的形式转换为只有python语言认识的字符串</span><br><span class="line">v2 = pickle.dumps(data)</span><br><span class="line">print(v2)            </span><br><span class="line">mes = pickle.loads(v2)</span><br><span class="line">print(mes)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;python的pickle模块可以存储python数据文件，本文是该模块的学习记录。&lt;/p&gt;
+&lt;h4 id=&quot;pickle常用方法&quot;&gt;&lt;a href=&quot;#pickle常用方法&quot; class=&quot;headerlink&quot; title=&quot;pickle常用方法&quot;&gt;&lt;/a&gt;&lt;stron
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow学习率衰减实现</title>
+    <link href="https://frankindf.github.io/2018/04/28/tensorflow%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%A1%B0%E5%87%8F%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://frankindf.github.io/2018/04/28/tensorflow学习率衰减实现/</id>
+    <published>2018-04-28T14:40:06.000Z</published>
+    <updated>2018-04-28T14:40:06.961Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>tensorflow中的滑动平均值</title>
