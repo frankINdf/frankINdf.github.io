@@ -92,16 +92,17 @@
 
 
 
-<meta name="description" content="machine learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="阳阳的博客">
-<meta property="og:url" content="https://frankindf.github.io/index.html">
+<meta name="description" content="本文是一个RNN文本生成器的实践。 首先定义一些工具函数，这些函数可以将文本生成字典，并实现向量化。 神经网络在进行计算时，样本过大，整个训练集同时训练需要巨大的资源，因此需要将其分为数个Batch进行批训练。batch_generator函数用来生成Batch。函数流程如下： 复制数据 -&amp;gt; 计算每批参数大小 -&amp;gt; 计算分批数 -&amp;gt;  改变arr维度 -&amp;gt; 打乱训练集 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="能生成文本的RNN">
+<meta property="og:url" content="https://frankindf.github.io/2018/04/29/能生成文本的RNN/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="machine learning">
+<meta property="og:description" content="本文是一个RNN文本生成器的实践。 首先定义一些工具函数，这些函数可以将文本生成字典，并实现向量化。 神经网络在进行计算时，样本过大，整个训练集同时训练需要巨大的资源，因此需要将其分为数个Batch进行批训练。batch_generator函数用来生成Batch。函数流程如下： 复制数据 -&amp;gt; 计算每批参数大小 -&amp;gt; 计算分批数 -&amp;gt;  改变arr维度 -&amp;gt; 打乱训练集 1">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-30T15:45:03.125Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阳阳的博客">
-<meta name="twitter:description" content="machine learning">
+<meta name="twitter:title" content="能生成文本的RNN">
+<meta name="twitter:description" content="本文是一个RNN文本生成器的实践。 首先定义一些工具函数，这些函数可以将文本生成字典，并实现向量化。 神经网络在进行计算时，样本过大，整个训练集同时训练需要巨大的资源，因此需要将其分为数个Batch进行批训练。batch_generator函数用来生成Batch。函数流程如下： 复制数据 -&amp;gt; 计算每批参数大小 -&amp;gt; 计算分批数 -&amp;gt;  改变arr维度 -&amp;gt; 打乱训练集 1">
 
 
 
@@ -131,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://frankindf.github.io/"/>
+  <link rel="canonical" href="https://frankindf.github.io/2018/04/29/能生成文本的RNN/"/>
 
 
 
 
 
-  <title>阳阳的博客</title>
+  <title>能生成文本的RNN | 阳阳的博客</title>
   
 
 
@@ -156,8 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,169 +290,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/05/08/tensorflow保存模型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/08/tensorflow保存模型/" itemprop="url">tensorflow保存模型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-08T22:27:50+08:00">
-                2018-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/05/08/tensorflow保存模型/" class="leancloud_visitors" data-flag-title="tensorflow保存模型">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>tensorflow模型可以保存为meta文件或者pb文件本文主要是这两种方式的实践。</p>
-<p>保存为meta后，文件夹会出现4个文件：</p>
-<p><code>checkpoint</code>文件保存目录下所有的模型文件列表</p>
-<p><code>model.ckpt.meta</code>文件保存了TensorFlow计算图的结构</p>
-<p><code>model.ckpt</code>文件保存了TensorFlow程序中每一个变量的取值</p>
-<p><strong>保存为meta文件</strong></p>
-<p>模型保存：</p>
-<p>使用<code>tf.train.Saver()</code></p>
-<p>在构建图时定义<code>saver = tf.train.Saver()</code></p>
-<p>运行后使用<code>saver.save(sess ,&#39;d:/MMNIST/model2.ckpt&#39;)</code>将模型保存，此时文件夹中会出现上述的文件。</p>
-<p>模型加载</p>
-<p>tensorflow可以直接加载持久化模型</p>
-<p>使用<code>saver = tf.train.import_meta_graph(&#39;D:/MMNIST/model2.ckpt.meta&#39;)</code>导入持久化模型，此时导入的是<code>meta</code>文件</p>
-<p>使用<code>saver.restore(sess, tf.train.latest_checkpoint(&#39;D:/MMNIST/&#39;))</code>加载模型</p>
-<p><code>reader = tf.train.NewCheckpointReader(&#39;D:/MMNIST/model2.ckpt&#39;)</code>可以读取ckpt文件中的变量</p>
-<p>使用<code>get_variable_to_shape_map()</code>获得计算图中的所有变量，可以通过它打印出变量名</p>
-<p><strong>注意</strong>：</p>
-<p>保存模型的路径不能含有中文</p>
-<p>保存完成之后如果再次保存，需要将旧模型删除</p>
-<p><strong>保存为pb文件</strong></p>
-<p>PB 文件是表示 MetaGraph 的 protocol buffer格式的文件，MetaGraph 包括计算图，数据流，以及相关的变量和输入输出signature以及 asserts 指创建计算图时额外的文件。</p>
-<p>使用<code>tf.SavedModelBuilder</code>类来完成这个工作，并且可以把多个计算图保存到一个 PB 文件中，如果有多个MetaGraph，只会保留第一个 MetaGraph 的版本号，并且必须为每个MetaGraph 指定特殊的名称 tag 用以区分，通常这个名称 tag 以该计算图的功能和使用到的设备命名，比如 serving or training， CPU or GPU。</p>
-<p>模型保存：</p>
-<p>使用<code>tensorflow.python.framework.convert_variables_to_constants(sess,sess.graph_def,[&#39;op_to_store&#39;])</code>将模型持久化</p>
-<p>使用<code>tf.gfile.FastGFile(path,mode)</code>创建pb文件</p>
-<p>使用f.write(contant_graph.SerializeToString())将文件写入</p>
-<p>可以看到制定文件夹中会增加**.pb文件</p>
-<p>模型读取：</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -482,9 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/29/能生成文本的RNN/" itemprop="url">能生成文本的RNN</a></h1>
+          <h1 class="post-title" itemprop="name headline">能生成文本的RNN</h1>
         
 
         <div class="post-meta">
@@ -545,9 +383,7 @@
       
 
       
-        
-          
-            <p>本文是一个RNN文本生成器的实践。</p>
+        <p>本文是一个RNN文本生成器的实践。</p>
 <p>首先定义一些工具函数，这些函数可以将文本生成字典，并实现向量化。</p>
 <p>神经网络在进行计算时，样本过大，整个训练集同时训练需要巨大的资源，因此需要将其分为数个Batch进行批训练。<code>batch_generator</code>函数用来生成Batch。函数流程如下：</p>
 <p>复制数据 -&gt; 计算每批参数大小 -&gt; 计算分批数 -&gt;  改变arr维度 -&gt; 打乱训练集</p>
@@ -636,14 +472,18 @@ def load(self, checkpoint):
     self.saver.restore(self.session, checkpoint)
     print(&apos;Restored from: {}&apos;.format(checkpoint))
 </code></pre>
-          
-        
       
     </div>
     
     
     
     <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------------本文结束<i class="fa fa-paw"></i>感谢阅读-------------</div>
+    
+</div>
       
     </div>
     
@@ -656,160 +496,32 @@ def load(self, checkpoint):
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/28/python的pickle模块/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/28/python的pickle模块/" itemprop="url">python的pickle模块</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-28T23:01:12+08:00">
-                2018-04-28
-              </time>
+              <a href="/2018/04/28/python的pickle模块/" rel="next" title="python的pickle模块">
+                <i class="fa fa-chevron-left"></i> python的pickle模块
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2018/05/08/tensorflow保存模型/" rel="prev" title="tensorflow保存模型">
+                tensorflow保存模型 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/28/python的pickle模块/" class="leancloud_visitors" data-flag-title="python的pickle模块">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>python的pickle模块可以存储python数据文件，本文是该模块的学习记录。</p>
-<h4 id="pickle常用方法"><a href="#pickle常用方法" class="headerlink" title="pickle常用方法"></a><strong>pickle常用方法</strong></h4><h5 id="序列化和反序列化："><a href="#序列化和反序列化：" class="headerlink" title="序列化和反序列化："></a>序列化和反序列化：</h5><p>序列化就是把计算得到的数据保存起来，当需要使用时反序列化把数据恢复，这样有如下好处：</p>
-<ol>
-<li>被pickle的数据，在被多次reload时，不需要重新去计算得到这些数据，这样节省计算机资源，如果你不pickle，你每调用一次数据，就要计算一次。</li>
-<li>通过pickle的数据，被reload时，可以更好的被内存调用，不需要经过数据格式的转换。</li>
-</ol>
-<p>pickle.dump(obj,file,protocol,)</p>
-<p>将obj保存为文件</p>
-<p>pickle.load(file)</p>
-<p>读取pickle文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import pickle  </span><br><span class="line">t1=[&apos;a&apos;,3,4]</span><br><span class="line">with open(&apos;temp.pkl&apos;,&apos;wb+&apos;) as f: </span><br><span class="line">	v1 = pickle.dump(t1)</span><br><span class="line">#可以看到文件夹里多了temp.pkl</span><br><span class="line">with open(&apos;d:temp.pkl&apos;,&apos;rb&apos;) as f: </span><br><span class="line">    v2=pickle.load(f)</span><br><span class="line">    print(v2)</span><br></pre></td></tr></table></figure>
-<p>pickle.dumps(obj)</p>
-<p>将obj保存为pickle对象</p>
-<p>pickle.loads(obj)</p>
-<p>读取pickle对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># dumps功能</span><br><span class="line">import pickle</span><br><span class="line">data = [3,6,8]  </span><br><span class="line"># dumps 将数据通过特殊的形式转换为只有python语言认识的字符串</span><br><span class="line">v2 = pickle.dumps(data)</span><br><span class="line">print(v2)            </span><br><span class="line">mes = pickle.loads(v2)</span><br><span class="line">print(mes)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -819,316 +531,11 @@ def load(self, checkpoint):
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/28/tensorflow学习率衰减实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/28/tensorflow学习率衰减实现/" itemprop="url">tensorflow学习率衰减实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-28T22:40:06+08:00">
-                2018-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/28/tensorflow学习率衰减实现/" class="leancloud_visitors" data-flag-title="tensorflow学习率衰减实现">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/28/tensorflow中的滑动平均值/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/28/tensorflow中的滑动平均值/" itemprop="url">tensorflow中的滑动平均值</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-28T20:10:50+08:00">
-                2018-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/28/tensorflow中的滑动平均值/" class="leancloud_visitors" data-flag-title="tensorflow中的滑动平均值">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在tensorflow中使用滑动平均值可以有效提高计算效率，本文为滑动平均值的学习记录。</p>
-<p><strong>计算原理</strong></p>
-<p>TensorFlow中采用<code>tf.train.ExponentialMovingAverage</code>函数更新参数，函数每次更新参数后需要和上一轮的变量按照下面公式进行更新：</p>
-<p>$$<br>new_value = (1-\alpha)<em>value+\alpha </em>old_ value<br>$$</p>
-<p>可以看到参数更新的本质就是采用一阶低通滤波法对本次采样值与上次滤波输出值进行加权，得到有效滤波值，使得输出对输入有反馈作用，同时参数波动会减小，$\alpha$越大参数更新越慢，$\alpha$越小参数越灵敏。</p>
-<p><strong>直接定义滑动平均值对象</strong></p>
-<ol>
-<li>定义需要更新的参数v、本次更新为第几步的参数step(可选)</li>
-<li>定义滑动平均值<code>ema = tf.train.ExponentialMovingAverage(decay,step)</code></li>
-<li>将需要更新的参数v添加到ema，使用<code>ema,apply([v])</code></li>
-<li><code>sess.run</code>更新滑动平均值</li>
-<li>重复1-4</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var0 = tf.Variable(...)</span><br><span class="line">var1 = tf.Variable(...)</span><br><span class="line"></span><br><span class="line">opt_op = opt.minimize(my_loss, [var0, var1])</span><br><span class="line"></span><br><span class="line"># </span><br><span class="line">ema = tf.train.ExponentialMovingAverage(decay=0.9999)</span><br><span class="line"></span><br><span class="line">with tf.control_dependencies([opt_op]):</span><br><span class="line">    # Create the shadow variables, and add ops to maintain moving averages</span><br><span class="line">    # of var0 and var1. This also creates an op that will update the moving</span><br><span class="line">    # averages after each training step.  This is what we will use in place</span><br><span class="line">    # of the usual training op.</span><br><span class="line">    training_op = ema.apply([var0, var1])</span><br></pre></td></tr></table></figure>
-<p><strong>定义变量将其保存为滑动平均值</strong></p>
-<p>1.定义滑动平均值对象</p>
-<p>2.定义滑动平均值变量名</p>
-<p>3.将变量保存到对应滑动平均值名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 定义滑动平均值变量名shadow_var0_name，shadow_var1_name，将var0和var1保存对应这两个滑动平均值</span><br><span class="line"># 加载后var0和var1以滑动平均的方式计算</span><br><span class="line">shadow_var0_name = ema.average_name(var0)</span><br><span class="line">shadow_var1_name = ema.average_name(var1)</span><br><span class="line">saver = tf.train.Saver(&#123;shadow_var0_name: var0, shadow_var1_name: var1&#125;)</span><br><span class="line">saver.restore(...checkpoint filename...)</span><br></pre></td></tr></table></figure>
-<p><strong>函数的使用</strong></p>
-<p><code>tf.train.ExponentialMovingAverage</code>定义滑动平均值计算，定义一个滑动平均值计算对象</p>
-<p>初始化参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(   decay,  #衰减率</span><br><span class="line">    num_updates=None, #更新的步数，由函数自己维护</span><br><span class="line">    zero_debias=False, #</span><br><span class="line">    name=&apos;ExponentialMovingAverage&apos; #滑动平均值的名称</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
-<p>在tensorflow中，为了保证开始时参数更新够快,实际的更新公式如下：</p>
-<p>$min(decay, (1 + num_updates) / (10 + num_updates))$</p>
-<p><strong>apply（var_list）</strong></p>
-<p>将需要更新的参数赋给计算函数，使用<code>trainable=False</code>可以创建影子变量,通过<code>tf.global_variables()</code>可以返回step.</p>
-<ul>
-<li>​</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__init__(</span><br><span class="line">    decay,</span><br><span class="line">    num_updates=None,</span><br><span class="line">    zero_debias=False,</span><br><span class="line">    name=&apos;ExponentialMovingAverage&apos;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><strong>average(var)</strong></p>
-<p>使用average方法返回滑动平均值</p>
-<p><strong>average_name(var)</strong></p>
-<p>返回滑动平均值的变量名</p>
-<p><strong>计算滑动平均值实践</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line">v1 = tf.Variable(0, dtype=tf.float32)   # 定义一个变量，初始值为0</span><br><span class="line">step = tf.Variable(0, trainable=False)    # step为迭代轮数变量，控制衰减率</span><br><span class="line">ema = tf.train.ExponentialMovingAverage(0.5)  # 初始设定衰减率为0.99</span><br><span class="line">maintain_averages_op = ema.apply([v1])                 # 更新列表中的变量</span><br><span class="line">init_op = tf.global_variables_initializer()        # 初始化所有变量</span><br><span class="line">sess.run(init_op)</span><br><span class="line">print(sess.run([v1, ema.average(v1)]))                # 输出初始化后变量v1的值和v1的滑动平均值</span><br><span class="line">sess.run(tf.assign(v1, 5))                            # 更新v1的值</span><br><span class="line">sess.run(maintain_averages_op)                        # 更新v1的滑动平均值</span><br><span class="line">print(sess.run([v1, ema.average(v1)]))</span><br><span class="line">sess.run(tf.assign(step, 10000))                      # 更新迭代轮转数step</span><br><span class="line">sess.run(tf.assign(v1, 10))</span><br><span class="line">sess.run(maintain_averages_op)</span><br><span class="line">print(sess.run([v1, ema.average(v1)]))</span><br><span class="line">                                                      # 再次更新滑动平均值，</span><br><span class="line">sess.run(maintain_averages_op)</span><br><span class="line">print(sess.run([v1, ema.average(v1)]))</span><br><span class="line">                                                      # 更新v1的值为15</span><br><span class="line">sess.run(tf.assign(v1, 15))</span><br><span class="line"></span><br><span class="line">sess.run(maintain_averages_op)</span><br><span class="line">print(sess.run([v1, ema.average(v1)]))</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">out：</span><br><span class="line">[0.0, 0.0]</span><br><span class="line">[5.0, 2.5]#更新值为5，decay=0.5,结果=(5*0.5+0*0.5)</span><br><span class="line">[10.0, 6.25]#更新值为10，结果=(2.5*0.5+10*0.5)</span><br><span class="line">[10.0, 8.125]</span><br><span class="line">[15.0, 11.5625]</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
 
 
           </div>
@@ -1136,6 +543,10 @@ def load(self, checkpoint):
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1355,6 +766,10 @@ def load(self, checkpoint):
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1519,26 +934,6 @@ def load(self, checkpoint):
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
