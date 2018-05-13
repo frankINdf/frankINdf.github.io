@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="在tensorflow中使用滑动平均值可以有效提高计算效率，本文为滑动平均值的学习记录。 计算原理 TensorFlow中采用tf.train.ExponentialMovingAverage函数更新参数，函数每次更新参数后需要和上一轮的变量按照下面公式进行更新： $new_value = (1-\alpha)value+\alpha old_ value$ 可以看到参数更新的本质就是采用一阶低通">
+<meta name="description" content="在tensorflow中使用滑动平均值可以有效提高计算效率，本文为滑动平均值的学习记录。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tensorflow中的滑动平均值">
 <meta property="og:url" content="https://frankindf.github.io/2018/04/28/tensorflow中的滑动平均值/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="在tensorflow中使用滑动平均值可以有效提高计算效率，本文为滑动平均值的学习记录。 计算原理 TensorFlow中采用tf.train.ExponentialMovingAverage函数更新参数，函数每次更新参数后需要和上一轮的变量按照下面公式进行更新： $new_value = (1-\alpha)value+\alpha old_ value$ 可以看到参数更新的本质就是采用一阶低通">
+<meta property="og:description" content="在tensorflow中使用滑动平均值可以有效提高计算效率，本文为滑动平均值的学习记录。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-09T12:43:04.983Z">
+<meta property="og:updated_time" content="2018-05-13T15:11:30.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow中的滑动平均值">
-<meta name="twitter:description" content="在tensorflow中使用滑动平均值可以有效提高计算效率，本文为滑动平均值的学习记录。 计算原理 TensorFlow中采用tf.train.ExponentialMovingAverage函数更新参数，函数每次更新参数后需要和上一轮的变量按照下面公式进行更新： $new_value = (1-\alpha)value+\alpha old_ value$ 可以看到参数更新的本质就是采用一阶低通">
+<meta name="twitter:description" content="在tensorflow中使用滑动平均值可以有效提高计算效率，本文为滑动平均值的学习记录。">
 
 
 
@@ -384,6 +384,7 @@
 
       
         <p>在tensorflow中使用滑动平均值可以有效提高计算效率，本文为滑动平均值的学习记录。</p>
+<a id="more"></a>
 <p><strong>计算原理</strong></p>
 <p>TensorFlow中采用<code>tf.train.ExponentialMovingAverage</code>函数更新参数，函数每次更新参数后需要和上一轮的变量按照下面公式进行更新：</p>
 <p>$new_value = (1-\alpha)<em>value+\alpha </em>old_ value$</p>

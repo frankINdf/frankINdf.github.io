@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="本文是一个RNN文本生成器的实践。 首先定义一些工具函数，这些函数可以将文本生成字典，并实现向量化。 神经网络在进行计算时，样本过大，整个训练集同时训练需要巨大的资源，因此需要将其分为数个Batch进行批训练。batch_generator函数用来生成Batch。函数流程如下： 复制数据 -&amp;gt; 计算每批参数大小 -&amp;gt; 计算分批数 -&amp;gt;  改变arr维度 -&amp;gt; 打乱训练集 1">
+<meta name="description" content="本文是一个RNN文本生成器的实践。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="能生成文本的RNN">
 <meta property="og:url" content="https://frankindf.github.io/2018/04/29/能生成文本的RNN/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="本文是一个RNN文本生成器的实践。 首先定义一些工具函数，这些函数可以将文本生成字典，并实现向量化。 神经网络在进行计算时，样本过大，整个训练集同时训练需要巨大的资源，因此需要将其分为数个Batch进行批训练。batch_generator函数用来生成Batch。函数流程如下： 复制数据 -&amp;gt; 计算每批参数大小 -&amp;gt; 计算分批数 -&amp;gt;  改变arr维度 -&amp;gt; 打乱训练集 1">
+<meta property="og:description" content="本文是一个RNN文本生成器的实践。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-30T15:45:03.125Z">
+<meta property="og:updated_time" content="2018-05-13T15:09:44.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="能生成文本的RNN">
-<meta name="twitter:description" content="本文是一个RNN文本生成器的实践。 首先定义一些工具函数，这些函数可以将文本生成字典，并实现向量化。 神经网络在进行计算时，样本过大，整个训练集同时训练需要巨大的资源，因此需要将其分为数个Batch进行批训练。batch_generator函数用来生成Batch。函数流程如下： 复制数据 -&amp;gt; 计算每批参数大小 -&amp;gt; 计算分批数 -&amp;gt;  改变arr维度 -&amp;gt; 打乱训练集 1">
+<meta name="twitter:description" content="本文是一个RNN文本生成器的实践。">
 
 
 
@@ -384,6 +384,7 @@
 
       
         <p>本文是一个RNN文本生成器的实践。</p>
+<a id="more"></a>
 <p>首先定义一些工具函数，这些函数可以将文本生成字典，并实现向量化。</p>
 <p>神经网络在进行计算时，样本过大，整个训练集同时训练需要巨大的资源，因此需要将其分为数个Batch进行批训练。<code>batch_generator</code>函数用来生成Batch。函数流程如下：</p>
 <p>复制数据 -&gt; 计算每批参数大小 -&gt; 计算分批数 -&gt;  改变arr维度 -&gt; 打乱训练集</p>
