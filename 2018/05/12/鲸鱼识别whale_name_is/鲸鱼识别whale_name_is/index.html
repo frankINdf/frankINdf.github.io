@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+
+      '<div style="position: fixed;'                                                               +
+            'right: 3%;'                                                                     +
+            'margin-top: 5px;'                                                               +
+            'font-family: consolas, Menlo, \'PingFang SC\', \'Microsoft YaHei\', monospace;' +
+            'font-size: 10px;'                                                               +
+            'cursor: pointer;'                                                               +
+            'color: #e31436;'                                                                +
+            '">'                                                                             
+      '</div>'
+  
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="阳阳的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="123456789import pandas as pdimport numpy as npfrom PIL import Imageimport matplotlib.pyplot as pltfrom collections import CounterINPUT_DIR = &apos;D:/tens/kraggle/whale/train/&apos;PATH = r&quot;D:\tens\kraggle\whal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阳阳的博客">
+<meta property="og:url" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/index.html">
+<meta property="og:site_name" content="阳阳的博客">
+<meta property="og:description" content="123456789import pandas as pdimport numpy as npfrom PIL import Imageimport matplotlib.pyplot as pltfrom collections import CounterINPUT_DIR = &apos;D:/tens/kraggle/whale/train/&apos;PATH = r&quot;D:\tens\kraggle\whal">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_3_0.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_5_1.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_7_0.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_7_1.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_8_0.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_8_1.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_9_0.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_11_0.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_11_1.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_12_0.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_13_0.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_14_0.png">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_15_0.png">
+<meta property="og:updated_time" content="2018-05-12T15:29:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阳阳的博客">
+<meta name="twitter:description" content="123456789import pandas as pdimport numpy as npfrom PIL import Imageimport matplotlib.pyplot as pltfrom collections import CounterINPUT_DIR = &apos;D:/tens/kraggle/whale/train/&apos;PATH = r&quot;D:\tens\kraggle\whal">
+<meta name="twitter:image" content="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_3_0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/"/>
+
+
+
+
+
+  <title> | 阳阳的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阳阳的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学无止境</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-use"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-ta"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阳阳">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阳阳的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-12T23:29:53+08:00">
+                2018-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">INPUT_DIR = <span class="string">'D:/tens/kraggle/whale/train/'</span></span><br><span class="line"></span><br><span class="line">PATH = <span class="string">r"D:\tens\kraggle\whale\train.csv"</span></span><br><span class="line">train_df = pd.read_csv(PATH)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_df.describe()</span><br></pre></td></tr></table></figure>
+<div><br><style><br>    .dataframe thead tr:only-child th {<br>        text-align: right;<br>    }<br><br>    .dataframe thead th {<br>        text-align: left;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>Image</th><br>      <th>Id</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>count</th><br>      <td>9850</td><br>      <td>9850</td><br>    </tr><br>    <tr><br>      <th>unique</th><br>      <td>9850</td><br>      <td>4251</td><br>    </tr><br>    <tr><br>      <th>top</th><br>      <td>72046206.jpg</td><br>      <td>new_whale</td><br>    </tr><br>    <tr><br>      <th>freq</th><br>      <td>1</td><br>      <td>810</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_df.head()</span><br></pre></td></tr></table></figure>
+<div><br><style><br>    .dataframe thead tr:only-child th {<br>        text-align: right;<br>    }<br><br>    .dataframe thead th {<br>        text-align: left;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>Image</th><br>      <th>Id</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>00022e1a.jpg</td><br>      <td>w_e15442c</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>000466c4.jpg</td><br>      <td>w_1287fbc</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>00087b01.jpg</td><br>      <td>w_da2efe0</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>001296d5.jpg</td><br>      <td>w_19e5482</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>0014cfdf.jpg</td><br>      <td>w_f22f3e3</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure()</span><br><span class="line">img = plt.imread(INPUT_DIR+train_df.Image[<span class="number">0</span>])</span><br><span class="line">plt.imshow(img)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_3_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num_categories = len(train_df.Id.unique())</span><br><span class="line">num_img = len(train_df.Id)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">size_buckets = Counter(train_df.Id.value_counts())</span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line"></span><br><span class="line">plt.bar(range(len(size_buckets)), list(size_buckets.values())[::<span class="number">-1</span>], align=<span class="string">'center'</span>)</span><br><span class="line">plt.xticks(range(len(size_buckets)), list(size_buckets.keys())[::<span class="number">-1</span>])</span><br><span class="line">plt.title(<span class="string">"Num of categories by images in the training set"</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.figure.Figure at 0xb7cdef0&gt;
+</code></pre><p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_5_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_df[<span class="string">'Id'</span>].value_counts().head(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>new_whale    810
+w_1287fbc     34
+w_98baff9     27
+Name: Id, dtype: int64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">w_98baff9 = train_df[train_df[<span class="string">'Id'</span>] == <span class="string">'w_98baff9'</span>]</span><br><span class="line">plot_images_for_filenames(list(w_98baff9[<span class="string">'Image'</span>]), <span class="keyword">None</span>, rows=<span class="number">9</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_7_0.png" alt="png"></p>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_7_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">one_image_ids = train_df[<span class="string">'Id'</span>].value_counts().tail(<span class="number">8</span>).keys()</span><br><span class="line">one_image_filenames = []</span><br><span class="line">labels = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> one_image_ids:</span><br><span class="line">    one_image_filenames.extend(list(train_df[train_df[<span class="string">'Id'</span>] == i][<span class="string">'Image'</span>]))</span><br><span class="line">    labels.append(i)</span><br><span class="line">    </span><br><span class="line">plot_images_for_filenames(one_image_filenames, labels, rows=<span class="number">3</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_8_0.png" alt="png"></p>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_8_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">img_sizes = Counter([Image.open(<span class="string">f'<span class="subst">&#123;INPUT_DIR&#125;</span><span class="subst">&#123;i&#125;</span>'</span>).size <span class="keyword">for</span> i <span class="keyword">in</span> train_df[<span class="string">'Image'</span>]])</span><br><span class="line"></span><br><span class="line">size, freq = zip(*Counter(&#123;i: v <span class="keyword">for</span> i, v <span class="keyword">in</span> img_sizes.items() <span class="keyword">if</span> v &gt; <span class="number">1</span>&#125;).most_common(<span class="number">20</span>))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line"></span><br><span class="line">plt.bar(range(len(freq)), list(freq), align=<span class="string">'center'</span>)</span><br><span class="line">plt.xticks(range(len(size)), list(size), rotation=<span class="number">70</span>)</span><br><span class="line">plt.title(<span class="string">"Image size frequencies (where freq &gt; 1)"</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_9_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.preprocessing.image <span class="keyword">import</span> (</span><br><span class="line">    random_rotation, random_shift, random_shear, random_zoom,</span><br><span class="line">    random_channel_shift, transform_matrix_offset_center, img_to_array)</span><br><span class="line">img = Image.open(<span class="string">f'<span class="subst">&#123;INPUT_DIR&#125;</span>ff38054f.jpg'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">img_arr = img_to_array(img)</span><br><span class="line">plt.imshow(img)</span><br><span class="line">imgs = [</span><br><span class="line">    random_rotation(img_arr, <span class="number">30</span>, row_axis=<span class="number">0</span>, col_axis=<span class="number">1</span>, channel_axis=<span class="number">2</span>, fill_mode=<span class="string">'nearest'</span>) * <span class="number">255</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line">img_max = np.array(imgs).max()</span><br><span class="line">imgs = imgs/img_max</span><br><span class="line">plot_images(imgs, <span class="keyword">None</span>, rows=<span class="number">1</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_11_0.png" alt="png"></p>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_11_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">imgs = [</span><br><span class="line">    random_shift(img_arr, wrg=<span class="number">0.1</span>, hrg=<span class="number">0.3</span>, row_axis=<span class="number">0</span>, col_axis=<span class="number">1</span>, channel_axis=<span class="number">2</span>, fill_mode=<span class="string">'nearest'</span>) * <span class="number">255</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">img_max = np.array(imgs).max()</span><br><span class="line">imgs = imgs/img_max</span><br><span class="line">plot_images(imgs, <span class="keyword">None</span>, rows=<span class="number">1</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_12_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">imgs = [</span><br><span class="line">    random_shear(img_arr, intensity=<span class="number">0.4</span>, row_axis=<span class="number">0</span>, col_axis=<span class="number">1</span>, channel_axis=<span class="number">2</span>, fill_mode=<span class="string">'nearest'</span>) * <span class="number">255</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line">img_max = np.array(imgs).max()</span><br><span class="line">imgs = imgs/img_max</span><br><span class="line">plot_images(imgs, <span class="keyword">None</span>, rows=<span class="number">1</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_13_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">imgs = [</span><br><span class="line">    random_zoom(img_arr, zoom_range=(<span class="number">1.5</span>, <span class="number">0.7</span>), row_axis=<span class="number">0</span>, col_axis=<span class="number">1</span>, channel_axis=<span class="number">2</span>, fill_mode=<span class="string">'nearest'</span>) * <span class="number">255</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line">img_max = np.array(imgs).max()</span><br><span class="line">imgs = imgs/img_max</span><br><span class="line">plot_images(imgs, <span class="keyword">None</span>, rows=<span class="number">1</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_14_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random_greyscale</span><span class="params">(img, p)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> random.random() &lt; p:</span><br><span class="line">        <span class="keyword">return</span> np.dot(img[...,:<span class="number">3</span>], [<span class="number">0.299</span>, <span class="number">0.587</span>, <span class="number">0.114</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line">imgs = [</span><br><span class="line">    random_greyscale(img_arr, <span class="number">0.5</span>) * <span class="number">255</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">plot_images(imgs, <span class="keyword">None</span>, rows=<span class="number">1</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/output_15_0.png" alt="png"></p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------------本文结束<i class="fa fa-paw"></i>感谢阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/12/鲸的名字/" rel="next" title="鲸的名字">
+                <i class="fa fa-chevron-left"></i> 鲸的名字
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">阳阳</p>
+              <p class="site-description motion-element" itemprop="description">machine learning</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阳阳</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("E8tfvwb0QS2XFGBtbFmrB6ao-gzGzoHsz", "Cs1EI2HpnlWW12jrUiifTFuR");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
