@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="阳阳的博客">
 <meta property="og:description" content="本文是Kraggle竞赛Humpback Whale ID的分析过程。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸的名字/output_3_0.png?lastModify=1526219434">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸的名字/output_3_0.png">
 <meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸的名字/output_5_1.png">
 <meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸的名字/output_7_0.png">
 <meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸的名字/output_8_0.png">
@@ -110,11 +110,11 @@
 <meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸的名字/output_13_0.png">
 <meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸的名字/output_14_0.png">
 <meta property="og:image" content="https://frankindf.github.io/2018/05/12/鲸的名字/output_15_0.png">
-<meta property="og:updated_time" content="2018-05-13T15:15:27.099Z">
+<meta property="og:updated_time" content="2018-05-13T15:21:57.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鲸的名字">
 <meta name="twitter:description" content="本文是Kraggle竞赛Humpback Whale ID的分析过程。">
-<meta name="twitter:image" content="https://frankindf.github.io/2018/05/12/鲸的名字/output_3_0.png?lastModify=1526219434">
+<meta name="twitter:image" content="https://frankindf.github.io/2018/05/12/鲸的名字/output_3_0.png">
 
 
 
@@ -399,18 +399,15 @@
 <a id="more"></a>
 <h3 id="数据探索"><a href="#数据探索" class="headerlink" title="数据探索"></a>数据探索</h3><h4 id="数据概览"><a href="#数据概览" class="headerlink" title="数据概览"></a>数据概览</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">INPUT_DIR = <span class="string">'D:/tens/kraggle/whale/train/'</span></span><br><span class="line"></span><br><span class="line">PATH = <span class="string">r"D:\tens\kraggle\whale\train.csv"</span></span><br><span class="line">train_df = pd.read_csv(PATH)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_df.describe()</span><br></pre></td></tr></table></figure>
-<p><style><br>    .dataframe thead tr:only-child th {<br>        text-align: right;<br>    }</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.dataframe thead th &#123;</span><br><span class="line">    text-align: left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.dataframe tbody tr th &#123;</span><br><span class="line">    vertical-align: top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p></style></p>
-<table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>Image</th><br>      <th>Id</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>count</th><br>      <td>9850</td><br>      <td>9850</td><br>    </tr><br>    <tr><br>      <th>unique</th><br>      <td>9850</td><br>      <td>4251</td><br>    </tr><br>    <tr><br>      <th>top</th><br>      <td>72046206.jpg</td><br>      <td>new_whale</td><br>    </tr><br>    <tr><br>      <th>freq</th><br>      <td>1</td><br>      <td>810</td><br>    </tr><br>  </tbody><br></table>
+<table border="1"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>Image</th><br>      <th>Id</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>count</th><br>      <td>9850</td><br>      <td>9850</td><br>    </tr><br>    <tr><br>      <th>unique</th><br>      <td>9850</td><br>      <td>4251</td><br>    </tr><br>    <tr><br>      <th>top</th><br>      <td>72046206.jpg</td><br>      <td>new_whale</td><br>    </tr><br>    <tr><br>      <th>freq</th><br>      <td>1</td><br>      <td>810</td><br>    </tr><br>  </tbody><br></table>
 
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_df.head()</span><br></pre></td></tr></table></figure>
-<table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>Image</th><br>      <th>Id</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>00022e1a.jpg</td><br>      <td>w_e15442c</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>000466c4.jpg</td><br>      <td>w_1287fbc</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>00087b01.jpg</td><br>      <td>w_da2efe0</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>001296d5.jpg</td><br>      <td>w_19e5482</td><br>   </tr><br>    <tr><br>      <th>4</th><br>      <td>0014cfdf.jpg</td><br>      <td>w_f22f3e3</td><br>    </tr><br>  </tbody><br></table>
+<table border="1"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>Image</th><br>      <th>Id</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>00022e1a.jpg</td><br>      <td>w_e15442c</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>000466c4.jpg</td><br>      <td>w_1287fbc</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>00087b01.jpg</td><br>      <td>w_da2efe0</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>001296d5.jpg</td><br>      <td>w_19e5482</td><br>   </tr><br>    <tr><br>      <th>4</th><br>      <td>0014cfdf.jpg</td><br>      <td>w_f22f3e3</td><br>    </tr><br>  </tbody><br></table>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure()</span><br><span class="line">img = plt.imread(INPUT_DIR+train_df.Image[<span class="number">0</span>])</span><br><span class="line">plt.imshow(img)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/05/12/鲸的名字/output_3_0.png?lastModify=1526219434" alt="img"></p>
+<p><img src="/2018/05/12/鲸的名字/output_3_0.png" alt="1"></p>
 <h4 id="数据分布"><a href="#数据分布" class="headerlink" title="数据分布"></a>数据分布</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num_categories = len(train_df.Id.unique())</span><br><span class="line">num_img = len(train_df.Id)</span><br></pre></td></tr></table></figure>
 <p>类别分布</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">size_buckets = Counter(train_df.Id.value_counts())</span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line"></span><br><span class="line">plt.bar(range(len(size_buckets)), list(size_buckets.values())[::<span class="number">-1</span>], align=<span class="string">'center'</span>)</span><br><span class="line">plt.xticks(range(len(size_buckets)), list(size_buckets.keys())[::<span class="number">-1</span>])</span><br><span class="line">plt.title(<span class="string">"Num of categories by images in the training set"</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
@@ -497,10 +494,6 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/12/鲸鱼识别whale_name_is/鲸鱼识别whale_name_is/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
       
@@ -576,7 +569,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
