@@ -305,6 +305,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/05/18/PCA主成分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阳阳">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阳阳的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/18/PCA主成分析/" itemprop="url">PCA主成分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T21:55:07+08:00">
+                2018-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/18/PCA主成分析/" class="leancloud_visitors" data-flag-title="PCA主成分析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文主要是对矩阵运算和PCA主成分析的学习。</p>
+<h4 id="矩阵乘法意义"><a href="#矩阵乘法意义" class="headerlink" title="矩阵乘法意义"></a>矩阵乘法意义</h4><p>矩阵是线性代数的基础，矩阵相乘运算大家都知道，但这到底代表了什么呢？</p>
+<p>关于$AB^T$:矩阵$A$、$B$相乘为A的行向量和每个列向量相乘，第一行$[a1<em>b1,a1</em>b2,…]$其实就是$a1$在$b_1,b_2….$这些向量上的投影$|a_i||b_i|cos\theta$。</p>
+<p>关于矩阵乘法：矩阵相乘就是把原来每个维度的坐标进行变换$Ax$将原来空间上的坐标旋转，这里说是旋转是因为向量长度不变，只是分量变了.</p>
+<h4 id="矩阵特征值和特征向量"><a href="#矩阵特征值和特征向量" class="headerlink" title="矩阵特征值和特征向量"></a>矩阵特征值和特征向量</h4><p>将矩阵的行向量和特征向量相乘$a_ix_i$得到的是在特征向量$x_i$方向的投影,矩阵$Ax_i$得到的就是矩阵中每行在特征向量方向投影的向量，只有矩阵中的向量与特征向量垂直或平行时，才能满足$Ax_i=\lambda x_i$。这样就很好理解矩阵特征值和特征向量以及特征向量之间的关系。</p>
+<h4 id="PCA主成分析"><a href="#PCA主成分析" class="headerlink" title="PCA主成分析"></a>PCA主成分析</h4><p>PCA的思想就是提取特征值较大的特征向量来表示原数据，变换过程可以参考下图</p>
+<p><img src="/2018/05/18/PCA主成分析/pca.jpg" alt="c"></p>
+<p>首先为什么要提取特征值较大的特征向量，因为$Ax = \lambda x$,特征值$\lambda$较大代表A中列向量在x方向的投影较大，即数据分布范围较广，在这个方向投影可以保证数据最多信息，即投影到该方向上后数据的方差最大。</p>
+<p>其次怎么将原数据投影呢？根据之前矩阵乘法的意义，其实简单的将数据乘以特征向量就可以得到投影值。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/05/12/鲸的名字/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -840,138 +981,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/28/tensorflow学习率衰减实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阳阳">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阳阳的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/28/tensorflow学习率衰减实现/" itemprop="url">tensorflow学习率衰减实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-28T22:40:06+08:00">
-                2018-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/28/tensorflow学习率衰减实现/" class="leancloud_visitors" data-flag-title="tensorflow学习率衰减实现">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1022,7 +1031,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

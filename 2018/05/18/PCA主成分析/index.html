@@ -92,17 +92,19 @@
 
 
 
-<meta name="description" content="在求解约束条件下最优化的问题时，需要使用拉格朗日乘子法，本文是拉格朗日乘子法的学习记录。">
+<meta name="description" content="本文主要是对矩阵运算和PCA主成分析的学习。 矩阵乘法意义矩阵是线性代数的基础，矩阵相乘运算大家都知道，但这到底代表了什么呢？ 关于$AB^T$:矩阵$A$、$B$相乘为A的行向量和每个列向量相乘，第一行$[a1b1,a1b2,…]$其实就是$a1$在$b_1,b_2….$这些向量上的投影$|a_i||b_i|cos\theta$。 关于矩阵乘法：矩阵相乘就是把原来每个维度的坐标进行变换$Ax$将">
 <meta property="og:type" content="article">
-<meta property="og:title" content="拉格朗日对偶">
-<meta property="og:url" content="https://frankindf.github.io/2018/04/26/拉格朗日对偶/index.html">
+<meta property="og:title" content="PCA主成分析">
+<meta property="og:url" content="https://frankindf.github.io/2018/05/18/PCA主成分析/index.html">
 <meta property="og:site_name" content="阳阳的博客">
-<meta property="og:description" content="在求解约束条件下最优化的问题时，需要使用拉格朗日乘子法，本文是拉格朗日乘子法的学习记录。">
+<meta property="og:description" content="本文主要是对矩阵运算和PCA主成分析的学习。 矩阵乘法意义矩阵是线性代数的基础，矩阵相乘运算大家都知道，但这到底代表了什么呢？ 关于$AB^T$:矩阵$A$、$B$相乘为A的行向量和每个列向量相乘，第一行$[a1b1,a1b2,…]$其实就是$a1$在$b_1,b_2….$这些向量上的投影$|a_i||b_i|cos\theta$。 关于矩阵乘法：矩阵相乘就是把原来每个维度的坐标进行变换$Ax$将">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-26T15:50:58.736Z">
+<meta property="og:image" content="https://frankindf.github.io/2018/05/18/PCA主成分析/pca.jpg">
+<meta property="og:updated_time" content="2018-05-18T15:24:21.517Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="拉格朗日对偶">
-<meta name="twitter:description" content="在求解约束条件下最优化的问题时，需要使用拉格朗日乘子法，本文是拉格朗日乘子法的学习记录。">
+<meta name="twitter:title" content="PCA主成分析">
+<meta name="twitter:description" content="本文主要是对矩阵运算和PCA主成分析的学习。 矩阵乘法意义矩阵是线性代数的基础，矩阵相乘运算大家都知道，但这到底代表了什么呢？ 关于$AB^T$:矩阵$A$、$B$相乘为A的行向量和每个列向量相乘，第一行$[a1b1,a1b2,…]$其实就是$a1$在$b_1,b_2….$这些向量上的投影$|a_i||b_i|cos\theta$。 关于矩阵乘法：矩阵相乘就是把原来每个维度的坐标进行变换$Ax$将">
+<meta name="twitter:image" content="https://frankindf.github.io/2018/05/18/PCA主成分析/pca.jpg">
 
 
 
@@ -132,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://frankindf.github.io/2018/04/26/拉格朗日对偶/"/>
+  <link rel="canonical" href="https://frankindf.github.io/2018/05/18/PCA主成分析/"/>
 
 
 
 
 
-  <title>拉格朗日对偶 | 阳阳的博客</title>
+  <title>PCA主成分析 | 阳阳的博客</title>
   
 
 
@@ -305,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/04/26/拉格朗日对偶/">
+    <link itemprop="mainEntityOfPage" href="https://frankindf.github.io/2018/05/18/PCA主成分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="阳阳">
@@ -322,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">拉格朗日对偶</h1>
+          <h1 class="post-title" itemprop="name headline">PCA主成分析</h1>
         
 
         <div class="post-meta">
@@ -334,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T23:49:44+08:00">
-                2018-04-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T21:55:07+08:00">
+                2018-05-18
               </time>
             
 
@@ -352,7 +354,7 @@
 
           
           
-             <span id="/2018/04/26/拉格朗日对偶/" class="leancloud_visitors" data-flag-title="拉格朗日对偶">
+             <span id="/2018/05/18/PCA主成分析/" class="leancloud_visitors" data-flag-title="PCA主成分析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,24 +385,15 @@
       
 
       
-        <p>在求解约束条件下最优化的问题时，需要使用拉格朗日乘子法，本文是拉格朗日乘子法的学习记录。</p>
-<a id="more"></a>
-<p>拉格朗日乘子法可以分为3个问题：<br>(1)原始问题，即求f(x)最小值的问题等价于求拉格朗日乘子的最大值的最小值。<br>在求解下面约束条件最小值时<br>$$<br>min f(x)​<br>$$</p>
-<p>$$<br>s.t. c_i(x) \leqslant 0,i=1,2,…,k<br>h_i(x) = 0,i=1,2,…,l<br>$$</p>
-<p>拉格朗日乘子可以写成：<br>$$<br>L = max_{\alpha \beta} [ f(x) + \sum _{i=1} ^{k}\alpha _ic_i(x) + \sum _{j=1} ^{l}\beta _j h_j(x)<br>$$</p>
-<p>max(L)表达式如下<br>$$<br>\theta _p(x) = max _{\alpha ,\beta }\left [ f(x) + \sum _{i=1} ^{k}\alpha _ic_i(x) + \sum _{j=1} ^{l}\beta _j h_j(x) \right ]<br>$$</p>
-<p>若要满足边界条件$c_i(x) \leqslant 0, h_i(x) = 0$<br>$$<br>\sum _{i=1} ^{k}\alpha _ic_i(x) = 0<br>$$</p>
-<p>$$<br>\sum _{j=1} ^{l}\beta _j h_j(x) = 0<br>$$</p>
-<p>否则$\theta _p(x) $最大值为正无穷<br>此时：<br>$min f(x) $与 $min _{x}max{L(x,\alpha,\beta)}$等价。</p>
-<p>(2)对偶问题，对偶问题如果和原始问题等价可以方便求解。<br>$$<br>max _{x}min_{L(x,\alpha,\beta)}<br>$$<br>(3) 什么时候等价？<br>假设函数f和c是凸函数，h是仿射函数<br>对偶问题小于等于$f(x)$,$f(x)$又小于等于原始问题,但是当满足KTT条件时，对偶问题和原始问题是等价的。<br>KTT条件如下:<br>$$<br>\bigtriangledown _xL(x, \alpha ,\beta )=0<br>$$</p>
-<p>$$<br>\bigtriangledown _\alpha L(x, \alpha ,\beta )=0<br>$$</p>
-<p>$$<br>\bigtriangledown _\beta L(x, \alpha ,\beta )=0<br>$$</p>
-<p>$$<br>\alpha_i c_i(x) = 0<br>$$</p>
-<p>$$<br>c_i(x) \leqslant  0<br>$$</p>
-<p>$$<br>\alpha_i \geqslant  0<br>$$</p>
-<p>$$<br>h_j(x)=0<br>$$</p>
-<p>解决了上面问题，就可以将原始问题和对偶问题等价进行求解，问题也变成了凸函数。</p>
-<p>SVM问题里面都是满足KKT条件的，所以SVM里面求取对偶解就相当于求取原问题的解。为什么要求它的对偶呢？<br>因为kernel，通过对偶之后得到一个向量内积的形式，也就是$xTx$这种形式，而这种形式是kernel所擅长处理的。如果没有对偶，就没有后面的kernel映射，SVM也实现不了非线性分割。</p>
+        <p>本文主要是对矩阵运算和PCA主成分析的学习。</p>
+<h4 id="矩阵乘法意义"><a href="#矩阵乘法意义" class="headerlink" title="矩阵乘法意义"></a>矩阵乘法意义</h4><p>矩阵是线性代数的基础，矩阵相乘运算大家都知道，但这到底代表了什么呢？</p>
+<p>关于$AB^T$:矩阵$A$、$B$相乘为A的行向量和每个列向量相乘，第一行$[a1<em>b1,a1</em>b2,…]$其实就是$a1$在$b_1,b_2….$这些向量上的投影$|a_i||b_i|cos\theta$。</p>
+<p>关于矩阵乘法：矩阵相乘就是把原来每个维度的坐标进行变换$Ax$将原来空间上的坐标旋转，这里说是旋转是因为向量长度不变，只是分量变了.</p>
+<h4 id="矩阵特征值和特征向量"><a href="#矩阵特征值和特征向量" class="headerlink" title="矩阵特征值和特征向量"></a>矩阵特征值和特征向量</h4><p>将矩阵的行向量和特征向量相乘$a_ix_i$得到的是在特征向量$x_i$方向的投影,矩阵$Ax_i$得到的就是矩阵中每行在特征向量方向投影的向量，只有矩阵中的向量与特征向量垂直或平行时，才能满足$Ax_i=\lambda x_i$。这样就很好理解矩阵特征值和特征向量以及特征向量之间的关系。</p>
+<h4 id="PCA主成分析"><a href="#PCA主成分析" class="headerlink" title="PCA主成分析"></a>PCA主成分析</h4><p>PCA的思想就是提取特征值较大的特征向量来表示原数据，变换过程可以参考下图</p>
+<p><img src="/2018/05/18/PCA主成分析/pca.jpg" alt="c"></p>
+<p>首先为什么要提取特征值较大的特征向量，因为$Ax = \lambda x$,特征值$\lambda$较大代表A中列向量在x方向的投影较大，即数据分布范围较广，在这个方向投影可以保证数据最多信息，即投影到该方向上后数据的方差最大。</p>
+<p>其次怎么将原数据投影呢？根据之前矩阵乘法的意义，其实简单的将数据乘以特征向量就可以得到投影值。</p>
 
       
     </div>
@@ -433,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/23/最大熵算法/" rel="next" title="最大熵算法">
-                <i class="fa fa-chevron-left"></i> 最大熵算法
+              <a href="/2018/05/12/鲸的名字/" rel="next" title="鲸的名字">
+                <i class="fa fa-chevron-left"></i> 鲸的名字
               </a>
             
           </div>
@@ -442,10 +435,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/26/隐马尔科夫模型/" rel="prev" title="隐马尔科夫模型">
-                隐马尔科夫模型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -497,8 +486,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -556,6 +554,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵乘法意义"><span class="nav-number">1.</span> <span class="nav-text">矩阵乘法意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵特征值和特征向量"><span class="nav-number">2.</span> <span class="nav-text">矩阵特征值和特征向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PCA主成分析"><span class="nav-number">3.</span> <span class="nav-text">PCA主成分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -864,26 +878,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
