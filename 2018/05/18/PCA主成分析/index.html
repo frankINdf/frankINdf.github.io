@@ -100,7 +100,7 @@
 <meta property="og:description" content="本文主要是对矩阵运算和PCA主成分析的学习。 矩阵乘法意义矩阵是线性代数的基础，矩阵相乘运算大家都知道，但这到底代表了什么呢？ 关于$AB^T$:矩阵$A$、$B$相乘为A的行向量和每个列向量相乘，第一行$[a1b1,a1b2,…]$其实就是$a1$在$b_1,b_2….$这些向量上的投影$|a_i||b_i|cos\theta$。 关于矩阵乘法：矩阵相乘就是把原来每个维度的坐标进行变换$Ax$将">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://frankindf.github.io/2018/05/18/PCA主成分析/pca.jpg">
-<meta property="og:updated_time" content="2018-05-18T15:24:21.517Z">
+<meta property="og:updated_time" content="2018-05-18T15:30:44.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PCA主成分析">
 <meta name="twitter:description" content="本文主要是对矩阵运算和PCA主成分析的学习。 矩阵乘法意义矩阵是线性代数的基础，矩阵相乘运算大家都知道，但这到底代表了什么呢？ 关于$AB^T$:矩阵$A$、$B$相乘为A的行向量和每个列向量相乘，第一行$[a1b1,a1b2,…]$其实就是$a1$在$b_1,b_2….$这些向量上的投影$|a_i||b_i|cos\theta$。 关于矩阵乘法：矩阵相乘就是把原来每个维度的坐标进行变换$Ax$将">
@@ -394,6 +394,7 @@
 <p><img src="/2018/05/18/PCA主成分析/pca.jpg" alt="c"></p>
 <p>首先为什么要提取特征值较大的特征向量，因为$Ax = \lambda x$,特征值$\lambda$较大代表A中列向量在x方向的投影较大，即数据分布范围较广，在这个方向投影可以保证数据最多信息，即投影到该方向上后数据的方差最大。</p>
 <p>其次怎么将原数据投影呢？根据之前矩阵乘法的意义，其实简单的将数据乘以特征向量就可以得到投影值。</p>
+<p>PS:主成分析前需要对数据进行预处理。</p>
 
       
     </div>
@@ -435,6 +436,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/21/gboost/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -511,7 +516,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
