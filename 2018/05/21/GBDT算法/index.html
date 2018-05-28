@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="阳阳的博客">
 <meta property="og:description" content="GBDT和XGBOOST算法有广泛的应用，本文主要是该算法的学习记录。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-21T14:08:14.392Z">
+<meta property="og:updated_time" content="2018-05-21T15:49:55.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GBDT算法">
 <meta name="twitter:description" content="GBDT和XGBOOST算法有广泛的应用，本文主要是该算法的学习记录。">
@@ -385,8 +385,33 @@
       
         <p>GBDT和XGBOOST算法有广泛的应用，本文主要是该算法的学习记录。</p>
 <a id="more"></a>
-<p>Boosting方法是集成学习中重要的一种方法，Boosting方法中，最终的预测结果为b个学习器结果的合并。<br><strong>基本思想：</strong><br>每个分类器对之前所有分类器的结果和正确分类的残差进行学习，求解损失函数关于的泰勒展开，将问题转化为二次函数优化问题，求解出最值和取最值时的权重值。<br>具体推导如下：<br>分类器：<br>$y_i = y_{i-1}+f_t(x_i)+\Omega(f_i) $</p>
+<p>Boosting方法是集成学习中重要的一种方法，Boosting方法中，最终的预测结果为b个学习器结果的合并。<br><strong>基本思想：</strong><br>每个分类器对之前所有分类器的结果和正确分类的残差进行学习，求解损失函数关于的泰勒展开，将问题转化为二次函数优化问题，求解出最值和取最值时的权重值。<br>具体推导如下：<br>分类器：</p>
+<p>GBDT:</p>
+<p>$y_i = y_{i-1}+f_t(x_i)$</p>
+<p>XGBT:</p>
+<p>$y_i = y_{i-1}+f_t(x_i)+\Omega(f_i) $</p>
 <p>$\Omega(f_i)$为正则化项。 </p>
+<p><strong>GBDT:</strong></p>
+<p>弱分类器更新步骤</p>
+<p>1.求解前t-1个分类器的残差y-f(x)</p>
+<p>2.对残差拟合一个回归树，此处回归树是针对残差拟合的</p>
+<p>3.将前t步的结果进行求和，更新预测值</p>
+<p>为了拟合损失函数，可以利用梯度方向拟合损失大小</p>
+<p>梯度提升算法步骤：</p>
+<ol>
+<li><p>初始化，估计使损失函数极小化的常数值，它是只有一个根节点的树，即 $\gamma $是一个常数值。</p>
+</li>
+<li><p>迭代<br>a. 计算损失函数的负梯度在当前模型的值，将它作为残差的估计<br>b. 估计回归树叶节点区域，以拟合残差的近似值<br>c. 利用线性搜索估计叶节点区域的值，使损失函数极小化 ，即求合理的权重使损失函数极小<br>d. 更新回归树</p>
+</li>
+<li><p>得到输出的最终模型 f(x)</p>
+<p>为什么可以用梯度求解？</p>
+<p>用梯度$r_{ti}$来拟合一个树，用$c_{tj}$求拟合出来该树的j个节点的损失最小的系数，通过两个参数共同求解，相当给树的叶子节点加上权重。为什么不是任意一棵树乘权重呢？因为拟合梯度包含了残差的信息。</p>
+<p>损失函数的梯度怎么求？</p>
+<p>直接将损失函数对预测函数f(x)求导，对于二分类对数损失$log(1+exp(-yf(x)))$求导为$y_i/(1+exp(-yf(x)))$,其中f(x)取前t-1个树的预测值。</p>
+<p>求出使损失函数最小的权重$e_{mj}$</p>
+</li>
+</ol>
+<p><strong>XGBT:</strong></p>
 <p><strong>目标函数</strong>：<br>$\sum_{i=1}^{n} l(y_i,y_t)+\sum^{t}_{i=1} \Omega(f_i) $<br>现在需要求解使L取最值的$f_t(x_i)$<br>函数进行二阶泰勒展开如下<br>$f(x+\bigtriangleup x) = f(x)+f’(x)\bigtriangleup x + \frac{1}{2} f’’(x)\bigtriangleup  x^2$<br>对于目标函数，令$g_i = l’(y_i,y_t),h_i = l’’(y_i,y_t)$<br>可得<br>$\sum_{i=1}^{n} {l+g_if_t(x_i)+\frac{1}{2}f^2_t(x_i) }$</p>
 <p><strong>正则化项</strong>：</p>
 <p>定义正则化项：<br>$\Omega(f_t) = \gamma T +\frac{1}{2}\lambda \sum_{T}^{j=1}w^2_j$<br>正则化项可以使w_j和树的节点数有一个变小的趋势，该处为L2正则加上树的复杂程度.<br>利用f^2_t(x_i)=1化简可以得到<br>$\sum_{T}^{j=1}[(\sum _{i\in I_j}g_i) w_j+\frac{1}{2}(\sum _{i\in I_j}h_i+\lambda ) w^2_j]+\gamma T$<br>此处是将原来所有样例乘权重求和转化为叶子节点上所有样本集乘权重求和,与叶子节点上的权重$w^2_j$结合</p>
@@ -856,6 +881,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
